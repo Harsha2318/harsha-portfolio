@@ -54,6 +54,7 @@ body {
 .nav-links { display: flex; gap: 14px; list-style: none; margin: 0; padding: 0; }
 .nav-links a { color: var(--muted); text-decoration: none; font-weight: 600; }
 .nav-links a:hover { color: var(--primary); }
+.nav-links a.active { color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 4px; }
 
 #themeToggle { background: transparent; border: 1px solid var(--border); color: var(--muted); border-radius: 8px; padding: 6px 10px; cursor: pointer; }
 #themeToggle:hover { color: var(--primary); border-color: var(--primary); }
@@ -99,6 +100,7 @@ body {
 .badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 6px; }
 .badge { display: inline-block; font-size: 0.8rem; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: color-mix(in srgb, var(--bg-soft) 85%, transparent); color: var(--muted); font-weight: 600; }
 .badge:hover { color: var(--text); border-color: var(--primary); }
+.badge .icon { margin-right: 6px; filter: grayscale(20%); }
 
 /* Contact */
 .contact a { color: var(--accent); text-decoration: none; }

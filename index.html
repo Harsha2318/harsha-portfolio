@@ -113,51 +113,8 @@
 
     <section id="projects" class="container section reveal" style="--delay: .25s">
       <h2>Projects</h2>
-      <div class="grid three">
-        <article class="card reveal" style="--delay: .3s">
-          <h3>Bharat AI Chatbot Platform</h3>
-          <p>Multilingual AI chatbot with real‑time communication; Flask + MongoDB backend with WebSockets and SSE; AI agents for document summarization and automation; JWT with RBAC; Redis caching.</p>
-          <div class="badges" aria-label="Technologies">
-            <span class="badge">Flask</span>
-            <span class="badge">MongoDB</span>
-            <span class="badge">WebSockets</span>
-            <span class="badge">SSE</span>
-            <span class="badge">JWT</span>
-            <span class="badge">RBAC</span>
-            <span class="badge">Redis</span>
-          </div>
-          <div class="card-actions">
-            <a class="btn small" href="https://bhaai.org.in" target="_blank" rel="noopener">Live</a>
-          </div>
-        </article>
-        <article class="card reveal" style="--delay: .35s">
-          <h3>Satellite Change Detection System</h3>
-          <p>AI‑based satellite imagery change detection (18K × 18K). Siamese U‑Net with tile‑based inference; GeoTIFF & Shapefile generation; PyTorch, Rasterio, GDAL, GeoPandas.</p>
-          <div class="badges" aria-label="Technologies">
-            <span class="badge">PyTorch</span>
-            <span class="badge">Rasterio</span>
-            <span class="badge">GDAL</span>
-            <span class="badge">GeoPandas</span>
-            <span class="badge">Siamese U‑Net</span>
-          </div>
-          <div class="card-actions">
-            <a class="btn small" href="https://github.com/Harsha2318/Satellite-Change-Detection-System" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </article>
-        <article class="card reveal" style="--delay: .4s">
-          <h3>Quantum‑XAI (Open Source Library)</h3>
-          <p>Quantum ML library with explainability support. Implemented SHAP & LIME for Variational Quantum Circuits; hybrid quantum–classical benchmarking and visualization.</p>
-          <div class="badges" aria-label="Technologies">
-            <span class="badge">Quantum ML</span>
-            <span class="badge">VQC</span>
-            <span class="badge">SHAP</span>
-            <span class="badge">LIME</span>
-            <span class="badge">Python</span>
-          </div>
-          <div class="card-actions">
-            <a class="btn small" href="https://pypi.org/project/quantum-xai" target="_blank" rel="noopener">PyPI</a>
-          </div>
-        </article>
+      <div id="projectsGrid" class="grid three">
+        <!-- Cards rendered from assets/projects.json -->
       </div>
     </section>
 
