@@ -1,8 +1,8 @@
-# 🚀 Harsha P — Modern Portfolio Website
+# Portfolio Website
 
 Welcome to my portfolio! This site is a showcase of my skills, projects, achievements, and professional journey as a GenAI Developer and Full-Stack Engineer.
 
-![Portfolio Preview](assets/preview.png)
+<!-- ![Portfolio Preview](assets/preview.png) -->
 
 ---
 
