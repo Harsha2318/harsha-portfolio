@@ -1,0 +1,95 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Node Modules (if you add build tools later)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Build Output (if you add build process)
+dist/
+build/
+*.min.js
+*.min.css
+
+# Environment Variables
+.env
+.env.local
+.env.production
+
+# Logs
+logs/
+*.log
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+
+# Backup Files
+*.bak
+*.backup
+*~
+
+# Compressed Files (unless intentional)
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# Large Media Files (add if needed)
+# *.mp4
+# *.mov
+# *.avi
+
+# Personal/Private Files
+private/
+drafts/
+notes.txt
+TODO.txt
+
+# Cache
+.cache/
+.sass-cache/
+
+# Testing
+coverage/
+.nyc_output/
+
+# macOS
+.AppleDouble
+.LSOverride
+
+# Windows
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# Backup of original files before customization
+*.original
+*.old
+
+# Development notes
+NOTES.md
+scratch.html
+test.html
