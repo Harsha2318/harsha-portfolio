@@ -150,11 +150,11 @@ function initializeTypingEffect() {
   if (!typingText) return;
   
   const roles = [
-    'Full-Stack Developer',
-    'AI/ML Enthusiast',
-    'Problem Solver',
-    'Tech Innovator',
-    'Creative Coder'
+     'GenAI Developer',
+     'Full-Stack Engineer',
+     'AI/ML Researcher',
+     'Open Source Contributor',
+     'Tech Speaker'
   ];
   
   let roleIndex = 0;
