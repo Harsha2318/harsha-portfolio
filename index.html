@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+        <script>
+            // Centralized social/profile links for easy update
+            window.portfolioLinks = {
+                github: 'https://github.com/Harsha2318',
+                linkedin: 'https://linkedin.com/in/harsha-p-b02775250',
+                email: 'harshagowda2318@gmail.com',
+                resume: 'assets/resume.pdf'
+            };
+        </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Harsha P - GenAI Developer, Full-Stack Developer, AI/ML Enthusiast | Building intelligent, scalable, and impactful digital solutions">
@@ -66,11 +75,8 @@
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
                     <i class="fas fa-moon"></i>
                 </button>
-                <a href="assets/Harsha_P_Resume.pdf" download class="btn-download">
+                <a href="assets/resume.pdf" download class="btn-download">
                     <i class="fas fa-download"></i> Resume
-                        </a>
-                        <!-- Updated resume link -->
-                        <a href="assets/resume.pdf" download class="btn-download" style="display:none;">Resume PDF</a>
                 </a>
                 <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                     <span></span>
@@ -111,25 +117,22 @@
                     </a>
                 </div>
                 <div class="hero-social">
-                    <a href="https://github.com/harshap" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <a href="#" id="github-link" target="_blank" rel="noopener noreferrer" class="social-link">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://linkedin.com/in/harshap01" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <a href="#" id="linkedin-link" target="_blank" rel="noopener noreferrer" class="social-link">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="mailto:harshap01@gmail.com" class="social-link">
+                    <a href="#" id="email-link" class="social-link">
                         <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://twitter.com/harshap01" target="_blank" rel="noopener noreferrer" class="social-link">
-                        <i class="fab fa-twitter"></i>
                     </a>
                 </div>
             </div>
             <div class="hero-image" data-aos="fade-left" data-aos-delay="200">
                 <div class="hero-avatar-wrapper">
                     <div class="hero-avatar-bg"></div>
-                    <img src="assets/profile.JPG" alt="Harsha P" class="hero-avatar">
-                                    <!-- Consider updating profile image to match resume photo if available -->
+                    <!-- Placeholder profile image, update with your own before launch -->
+                    <img src="assets\profile.JPG" alt="Harsha P" class="hero-avatar" id="profile-photo">
                     <div class="hero-avatar-ring"></div>
                 </div>
             </div>
@@ -153,7 +156,8 @@
             <div class="about-content">
                 <div class="about-image" data-aos="fade-right">
                     <div class="about-img-wrapper">
-                        <img src="assets/profile.JPG" alt="Harsha P Working">
+                        <!-- Placeholder about image, update with your own before launch -->
+                        <img src="https://ui-avatars.com/api/?name=Harsha+P&size=800&background=6366f1&color=fff&bold=true" alt="Harsha P Working" id="about-photo">
                         <div class="about-img-overlay"></div>
                     </div>
                     <div class="about-stats">
@@ -474,7 +478,8 @@
                 <!-- Project 1 -->
                 <div class="project-card" data-category="ml fullstack" data-aos="fade-up">
                     <div class="project-image">
-                            <img src="assets/project1.jpg" alt="Bharat AI Chatbot Platform">
+                            <!-- Placeholder project image, update with your own before launch -->
+                            <img src="https://placehold.co/1200x800/6366f1/white?text=Project+1" alt="Bharat AI Chatbot Platform" id="project1-img">
                         <div class="project-overlay">
                             <div class="project-links">
                                     <a href="https://bhaai.org.in" target="_blank" rel="noopener noreferrer" class="project-link">
@@ -505,7 +510,8 @@
                 <!-- Project 2 -->
                 <div class="project-card" data-category="web fullstack" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-image">
-                            <img src="assets/project2.jpg" alt="Satellite Change Detection System">
+                            <!-- Placeholder project image, update with your own before launch -->
+                            <img src="https://placehold.co/1200x800/3b82f6/white?text=Project+2" alt="Satellite Change Detection System" id="project2-img">
                         <div class="project-overlay">
                             <div class="project-links">
                                     <a href="https://github.com/Harsha2318/Satellite-Change-Detection-System" target="_blank" rel="noopener noreferrer" class="project-link">
@@ -533,7 +539,8 @@
                 <!-- Project 3 -->
                 <div class="project-card" data-category="ml" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-image">
-                            <img src="assets/project3.jpg" alt="Quantum-XAI">
+                            <!-- Placeholder project image, update with your own before launch -->
+                            <img src="https://placehold.co/1200x800/10b981/white?text=Project+3" alt="Quantum-XAI" id="project3-img">
                         <div class="project-overlay">
                             <div class="project-links">
                                     <a href="https://pypi.org/project/quantum-xai" target="_blank" rel="noopener noreferrer" class="project-link">
@@ -933,14 +940,14 @@
                     </div>
 
                     <div class="contact-social">
-                            <a href="https://github.com/Harsha2318" target="_blank" rel="noopener noreferrer" class="social-icon">
+                        <a href="#" id="github-link2" target="_blank" rel="noopener noreferrer" class="social-icon">
                             <i class="fab fa-github"></i>
                         </a>
-                            <a href="https://linkedin.com/in/harsha-p-b02775250" target="_blank" rel="noopener noreferrer" class="social-icon">
+                        <a href="#" id="linkedin-link2" target="_blank" rel="noopener noreferrer" class="social-icon">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                            <a href="mailto:harshagowda2318@gmail.com" class="social-icon">
-                                <i class="fas fa-envelope"></i>
+                        <a href="#" id="email-link2" class="social-icon">
+                            <i class="fas fa-envelope"></i>
                         </a>
                     </div>
                 </div>
@@ -1015,9 +1022,9 @@
                     <div class="footer-column">
                         <h4>Connect</h4>
                         <ul>
-                                <li><a href="https://github.com/Harsha2318" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-                                <li><a href="https://linkedin.com/in/harsha-p-b02775250" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                                <li><a href="mailto:harshagowda2318@gmail.com">Email</a></li>
+                                <li><a href="#" id="github-link4" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                                <li><a href="#" id="linkedin-link4" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                                <li><a href="#" id="email-link4">Email</a></li>
                         </ul>
                     </div>
 
@@ -1038,14 +1045,14 @@
                     <i class="fas fa-heart"></i> by Harsha P
                 </p>
                 <div class="footer-social">
-                        <a href="https://github.com/Harsha2318" target="_blank" rel="noopener noreferrer">
+                    <a href="#" id="github-link3" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-github"></i>
                     </a>
-                        <a href="https://linkedin.com/in/harsha-p-b02775250" target="_blank" rel="noopener noreferrer">
+                    <a href="#" id="linkedin-link3" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                        <a href="mailto:harshagowda2318@gmail.com">
-                            <i class="fas fa-envelope"></i>
+                    <a href="#" id="email-link3">
+                        <i class="fas fa-envelope"></i>
                     </a>
                 </div>
             </div>
@@ -1062,4 +1069,20 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
+    <script>
+    // Set all social/profile links from centralized object
+    document.addEventListener('DOMContentLoaded', function() {
+        var links = window.portfolioLinks;
+        if (links) {
+            var githubs = document.querySelectorAll('#github-link, #github-link2, #github-link3, #github-link4');
+            githubs.forEach(function(a) { a.href = links.github; });
+            var linkedins = document.querySelectorAll('#linkedin-link, #linkedin-link2, #linkedin-link3, #linkedin-link4');
+            linkedins.forEach(function(a) { a.href = links.linkedin; });
+            var emails = document.querySelectorAll('#email-link, #email-link2, #email-link3, #email-link4');
+            emails.forEach(function(a) { a.href = 'mailto:' + links.email; });
+            var resume = document.querySelector('a.btn-download');
+            if (resume) resume.href = links.resume;
+        }
+    });
+    </script>
 </html>
