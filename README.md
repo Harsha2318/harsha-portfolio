@@ -1,74 +1,103 @@
-# Modern Portfolio Website Template
+# 🚀 Harsha P — Modern Portfolio Website
 
-A clean, responsive, and easily customizable portfolio website for developers, designers, and professionals. Built with HTML, CSS, and JavaScript—no frameworks or build tools required.
+Welcome to my portfolio! This site is a showcase of my skills, projects, achievements, and professional journey as a GenAI Developer and Full-Stack Engineer.
+
+![Portfolio Preview](assets/preview.png)
 
 ---
 
-## ✨ Features
-- **Modern, premium design**
-- **Responsive** (mobile, tablet, desktop)
-- **Easy content updates** (edit a single JS object for all social/profile links)
-- **Placeholder image support** (swap in your own images anytime)
-- **Resume download**
-- **Accessible & SEO-friendly**
-- **No dependencies**—just static files
+## 🌟 Overview
+- **Modern, premium design** with dark/light mode
+- **Fully responsive** (mobile, tablet, desktop)
+- **Performance optimized** and SEO-ready
+- **Easy to customize** for your own use
+
+---
+
+## 🧑‍💻 About This Portfolio
+- **Built with:** HTML5, CSS3, JavaScript (ES6+)
+- **UI/UX:** Clean, accessible, and animated
+- **Sections:**
+  - Hero (intro)
+  - About Me
+  - Skills
+  - Projects
+  - Experience
+  - Education
+  - Achievements
+  - Contact
+  - Footer (social links)
+
+---
+
+## 📂 Project Structure
+
+```
+harsha-portfolio/
+├── index.html         # Main site
+├── styles.css         # Styles
+├── script.js          # Interactivity
+├── assets/            # Images, resume, favicon
+│   └── ...
+└── README.md          # This file
+```
 
 ---
 
 ## 🚀 Getting Started
 
-1. **Clone or Download** this repository:
-   ```sh
-   git clone https://github.com/your-username/your-portfolio.git
-   cd your-portfolio
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Harsha2318/harsha-portfolio.git
+   cd harsha-portfolio
    ```
-2. **Add your assets**
-   - Place your images and resume in the `assets/` folder (see `assets/README.md` for details)
-3. **Customize content**
-   - Open `index.html` and update your name, about, skills, projects, experience, and achievements
-   - Update the `window.portfolioLinks` object in `<head>` to set your GitHub, LinkedIn, Email, and Resume links
-4. **Preview locally**
-   - Open `index.html` in your browser
-5. **Deploy**
-   - Upload to GitHub Pages, Netlify, Vercel, or any static hosting
+2. **Open `index.html` in your browser** or use a local server (e.g., VS Code Live Server).
+3. **Customize your content:**
+   - Update your info, skills, projects, and links in `index.html`.
+   - Replace placeholder images in the `assets/` folder.
+   - Update colors and styles in `styles.css`.
+4. **Deploy:**
+   - GitHub Pages, Netlify, Vercel, or any static host.
 
 ---
 
-## 🖼️ Image & Asset Guide
-- See `assets/README.md` for required images, formats, and tips
-- Use the included `PLACEHOLDER_ASSETS.html` for quick placeholder images
+## ✨ Features
+- **Dark/Light Mode** — Toggle for user preference
+- **Animated UI** — Smooth transitions and micro-interactions
+- **Filterable Projects** — Showcase your best work
+- **Contact Form** — Ready for integration (Formspree, Netlify, or custom backend)
+- **Centralized Social Links** — Update all links in one place
+- **Accessible & SEO-Ready** — Semantic HTML, ARIA labels, meta tags
 
 ---
 
 ## 🛠️ Customization
-- **Profile & About Images:** Swap placeholder URLs in `index.html` for your own images in `assets/`
-- **Project Images:** Replace placeholder URLs or update with your screenshots
-- **Social/Profile Links:** Change only in the `window.portfolioLinks` JS object for global update
-- **Resume:** Replace `assets/resume.pdf` with your own
+- **Images:** Replace placeholders in `assets/` (profile, about, projects)
+- **Content:** Edit `index.html` for your details
+- **Colors:** Change CSS variables in `styles.css`
+- **Links:** Update all social/profile links in the JS object at the top of `index.html`
 
 ---
 
-## 📦 Folder Structure
-```
-assets/           # Images, resume, favicon, etc.
-PLACEHOLDER_ASSETS.html  # Helper for placeholder images
-index.html        # Main portfolio site
-styles.css        # Custom styles
-script.js         # Typing effect and interactivity
-README.md         # This file
-```
+## 📝 Tips for a Great Portfolio
+- Use high-quality, professional images
+- Keep your content up to date
+- Proofread for clarity and accuracy
+- Test on all devices and browsers
+- Let your personality and achievements shine!
 
 ---
 
 ## 📄 License
-This template is open source and free to use for personal and commercial projects. Attribution appreciated but not required.
+
+This project is open source under the [MIT License](LICENSE).
 
 ---
 
-## 🙋‍♂️ Need Help?
-- See comments in `index.html` and `assets/README.md`
-- Open an issue or discussion on the original repo
+**Built with ❤️ by Harsha P**
 
----
+If you use or are inspired by this template, feel free to connect or share your version!
 
-**Showcase your work with style. Fork, customize, and launch your portfolio today!**
+- [LinkedIn](https://linkedin.com/in/harsha-p-b02775250)
+- [GitHub](https://github.com/Harsha2318)
+- [Email](mailto:harshagowda2318@gmail.com)
