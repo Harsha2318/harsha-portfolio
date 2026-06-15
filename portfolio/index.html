@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsha P | AI Engineer & Full-Stack Developer</title>
+    <meta name="description" content="Portfolio of Harsha P - AI Engineer specializing in LLM workflows, RAG pipelines, and scalable backend systems.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --bg-dark: #09090b;
+            --bg-card: #18181b;
+            --bg-card-hover: #27272a;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(255, 255, 255, 0.15);
+            
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            
+            --accent-primary: #6366f1; /* Indigo */
+            --accent-glow: rgba(99, 102, 241, 0.4);
+            --accent-success: #10b981;
+            
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --container-width: 1100px;
+            --header-height: 70px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            height: 1px;
+            flex: 1;
+            background: var(--border-subtle);
+            max-width: 300px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            font-family: var(--font-mono);
+            border: 1px solid var(--border-subtle);
+            background: rgba(255,255,255,0.03);
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .badge:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--text-primary);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-secondary);
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* --- BACKGROUND GRADIENTS --- */
+        .glow-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .glow-blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.15;
+            filter: blur(80px);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .glow-blob:nth-child(1) { top: -200px; left: -200px; }
+        .glow-blob:nth-child(2) { bottom: -200px; right: -200px; animation-delay: -5s; background: radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%); }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 50px); }
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--header-height);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding-top: calc(var(--header-height) + 80px);
+            padding-bottom: 100px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-label {
+            font-family: var(--font-mono);
+            color: var(--accent-primary);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            background: linear-gradient(to right, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .stat-item p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* --- BENTO GRID SKILLS --- */
+        .skills-section {
+            padding: 100px 0;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .bento-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-4px);
+        }
+
+        .bento-card.wide {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .bento-card.wide { grid-column: span 1; }
+        }
+
+        .skill-category {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-pill {
+            background: rgba(255,255,255,0.05);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border: 1px solid transparent;
+        }
+
+        .skill-pill.expert {
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        /* --- EXPERIENCE TIMELINE --- */
+        .experience-section {
+            padding: 100px 0;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 1px;
+            background: var(--border-subtle);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            padding-bottom: 60px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -4px;
+            top: 6px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 2px solid var(--accent-primary);
+            z-index: 1;
+        }
+
+        .timeline-date {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .timeline-role {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .timeline-company {
+            color: var(--accent-primary);
+            font-weight: 500;
+        }
+
+        .timeline-desc {
+            margin-top: 16px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .timeline-desc li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .timeline-desc li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        /* --- PROJECTS GRID --- */
+        .projects-section {
+            padding: 100px 0;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+            cursor: pointer;
+            group: project;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+
+        .folder-icon {
+            color: var(--accent-primary);
+            width: 40px;
+            height: 40px;
+        }
+
+        .external-link {
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .external-link:hover {
+            color: var(--text-primary);
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .project-summary {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* --- MODAL --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-highlight);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 32px 32px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .close-modal:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            padding: 32px;
+        }
+
+        .modal-section {
+            margin-bottom: 32px;
+        }
+
+        .modal-section h4 {
+            font-family: var(--font-mono);
+            color: var(--accent-primary);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .modal-section p, .modal-section li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .modal-section li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 8px;
+        }
+
+        .modal-section li::before {
+            content: '•';
+            color: var(--accent-primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .metric-card {
+            background: rgba(255,255,255,0.03);
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-success);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .social-link {
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .social-link:hover {
+            color: var(--accent-primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 60px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-card-hover);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Glow -->
+    <div class="glow-bg">
+        <div class="glow-blob"></div>
+        <div class="glow-blob"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">harsha.dev</a>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <a href="resume.pdf" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">Resume</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero" id="about">
+            <div class="hero-content">
+                <span class="hero-label">Hi, my name is</span>
+                <h1>Harsha P.</h1>
+                <h1 style="color: var(--text-secondary); font-size: clamp(2rem, 4vw, 3.5rem);">I build AI systems that ship.</h1>
+                <p>
+                    I'm an AI Engineer and Full-Stack Developer specializing in production-grade LLM systems, RAG pipelines, and scalable backend architectures. 
+                    From deploying satellite change detection on <strong>H100 GPUs at IIT Delhi</strong> to publishing quantum libraries on PyPI, I bridge the gap between research and real-world impact.
+                </p>
+                
+                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                    <a href="#projects" class="btn btn-primary">
+                        View Case Studies <i data-lucide="arrow-right" style="width: 18px;"></i>
+                    </a>
+                    <a href="https://github.com/Harsha2318" target="_blank" class="btn btn-secondary">
+                        <i data-lucide="github" style="width: 18px;"></i> GitHub
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>9.12</h3>
+                        <p>CGPA / 10</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>6+</h3>
+                        <p>Production Projects</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>10h+</h3>
+                        <p>Weekly Saved via Automation</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>3</h3>
+                        <p>AI Internships</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Bento Grid -->
+        <section class="skills-section" id="skills">
+            <h2 class="section-title">Technical Arsenal</h2>
+            <div class="bento-grid">
+                <!-- Card 1 -->
+                <div class="bento-card wide">
+                    <div class="skill-category">AI & GenAI Engineering</div>
+                    <div class="skill-list">
+                        <span class="skill-pill expert">LangGraph</span>
+                        <span class="skill-pill expert">LangChain</span>
+                        <span class="skill-pill expert">RAG Workflows</span>
+                        <span class="skill-pill expert">LLM Fine-tuning</span>
+                        <span class="skill-pill">Prompt Engineering</span>
+                        <span class="skill-pill">Computer Vision</span>
+                        <span class="skill-pill">SHAP / XAI</span>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bento-card">
+                    <div class="skill-category">Backend Systems</div>
+                    <div class="skill-list">
+                        <span class="skill-pill expert">Spring Boot</span>
+                        <span class="skill-pill expert">FastAPI</span>
+                        <span class="skill-pill expert">Microservices</span>
+                        <span class="skill-pill">REST APIs</span>
+                        <span class="skill-pill">JWT / RBAC</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bento-card">
+                    <div class="skill-category">Languages</div>
+                    <div class="skill-list">
+                        <span class="skill-pill expert">Python</span>
+                        <span class="skill-pill expert">Java</span>
+                        <span class="skill-pill">SQL</span>
+                        <span class="skill-pill">JavaScript</span>
+                        <span class="skill-pill">C</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bento-card wide">
+                    <div class="skill-category">DevOps & Data</div>
+                    <div class="skill-list">
+                        <span class="skill-pill expert">Docker</span>
+                        <span class="skill-pill">AWS</span>
+                        <span class="skill-pill">CI/CD Pipelines</span>
+                        <span class="skill-pill">MySQL</span>
+                        <span class="skill-pill">MongoDB</span>
+                        <span class="skill-pill">Redis</span>
+                        <span class="skill-pill">FAISS (Vector DB)</span>
+                        <span class="skill-pill">Linux</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline -->
+        <section class="experience-section" id="experience">
+            <h2 class="section-title">Where I've Worked</h2>
+            <div class="timeline">
+                
+                <!-- Role 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Nov 2025 – Apr 2026</div>
+                    <h3 class="timeline-role">AI Engineer Intern <span class="timeline-company">@ X Boson AI</span></h3>
+                    <ul class="timeline-desc">
+                        <li>Engineered a Satellite Image Change Detection pipeline for the <strong>AI Grand Challenge (PS-10)</strong>, utilizing tile-based deep learning on Bhoonidhi and Copernicus datasets.</li>
+                        <li>Containerized the inference pipeline using Docker, successfully deploying the model on <strong>H100 GPU infrastructure</strong> during the final on-site evaluation at IIT Delhi.</li>
+                    </ul>
+                </div>
+
+                <!-- Role 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2025</div>
+                    <h3 class="timeline-role">AI Full-Stack Developer <span class="timeline-company">@ Bharat AI (Contract)</span></h3>
+                    <ul class="timeline-desc">
+                        <li>Developed a scalable AI chatbot platform delivering end-to-end full-stack solutions using Flask, React, and MongoDB.</li>
+                        <li>Integrated LLM workflows with secure JWT authentication and Redis caching, delivering a fully functional MVP on schedule.</li>
+                    </ul>
+                </div>
+
+                <!-- Role 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">May 2025 – Sep 2025</div>
+                    <h3 class="timeline-role">Generative AI Developer <span class="timeline-company">@ HiDevs Startup</span></h3>
+                    <ul class="timeline-desc">
+                        <li>Built backend REST APIs using FastAPI, integrating LangChain to automate blog generation and email workflows.</li>
+                        <li><strong>Impact:</strong> Automated 3 core content workflows, eliminating approx. <strong>10 hours of manual work per week</strong>.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Projects Grid -->
+        <section class="projects-section" id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="project-grid">
+                
+                <!-- Project 1 -->
+                <div class="project-card" onclick="openModal('satellite')">
+                    <div class="project-header">
+                        <i data-lucide="satellite" class="folder-icon"></i>
+                        <a href="https://github.com/Harsha2318" target="_blank" class="external-link"><i data-lucide="external-link"></i></a>
+                    </div>
+                    <h3 class="project-title">Satellite Image Change Detection</h3>
+                    <p class="project-summary">Deep learning pipeline for detecting environmental changes using tile-based processing on H100 GPUs.</p>
+                    <div class="project-tech">
+                        <span>PyTorch</span>
+                        <span>Docker</span>
+                        <span>Computer Vision</span>
+                        <span>AWS</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card" onclick="openModal('quantum')">
+                    <div class="project-header">
+                        <i data-lucide="atom" class="folder-icon"></i>
+                        <a href="https://github.com/Harsha2318/QUANTUM-XAI-library" target="_blank" class="external-link"><i data-lucide="external-link"></i></a>
+                    </div>
+                    <h3 class="project-title">Quantum-XAI Library</h3>
+                    <p class="project-summary">A published Python library bridging Quantum Machine Learning and Explainable AI for transparent models.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Qiskit</span>
+                        <span>SHAP</span>
+                        <span>PyPI</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card" onclick="openModal('legal')">
+                    <div class="project-header">
+                        <i data-lucide="scale" class="folder-icon"></i>
+                        <a href="https://github.com/Harsha2318/Legal-Reference-Bot" target="_blank" class="external-link"><i data-lucide="external-link"></i></a>
+                    </div>
+                    <h3 class="project-title">Legal Reference Bot (RAG)</h3>
+                    <p class="project-summary">Retrieval-Augmented Generation assistant for accurate legal document synthesis with citation grounding.</p>
+                    <div class="project-tech">
+                        <span>LangChain</span>
+                        <span>FAISS</span>
+                        <span>RAG</span>
+                        <span>LLM</span>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card" onclick="openModal('techsync')">
+                    <div class="project-header">
+                        <i data-lucide="server" class="folder-icon"></i>
+                        <a href="https://github.com/Harsha2318/TechSync" target="_blank" class="external-link"><i data-lucide="external-link"></i></a>
+                    </div>
+                    <h3 class="project-title">TechSync Work Order System</h3>
+                    <p class="project-summary">Offline-first work-order management system with robust sync queue and local persistence layer.</p>
+                    <div class="project-tech">
+                        <span>Java</span>
+                        <span>Spring Boot</span>
+                        <span>SQLite</span>
+                        <span>Docker</span>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card" onclick="openModal('bharat')">
+                    <div class="project-header">
+                        <i data-lucide="message-square" class="folder-icon"></i>
+                        <a href="#" class="external-link"><i data-lucide="external-link"></i></a>
+                    </div>
+                    <h3 class="project-title">Bharat AI Chatbot</h3>
+                    <p class="project-summary">Multilingual AI chatbot platform with secure authentication and real-time caching.</p>
+                    <div class="project-tech">
+                        <span>Flask</span>
+                        <span>React</span>
+                        <span>MongoDB</span>
+                        <span>Redis</span>
+                    </div>
+                </div>
+
+                 <!-- Project 6 -->
+                 <div class="project-card" onclick="openModal('hidevs')">
+                    <div class="project-header">
+                        <i data-lucide="zap" class="folder-icon"></i>
+                        <a href="#" class="external-link"><i data-lucide="external-link"></i></a>
+                    </div>
+                    <h3 class="project-title">HiDevs Workflow Automation</h3>
+                    <p class="project-summary">Automated content generation pipeline saving 10+ hours of manual work weekly.</p>
+                    <div class="project-tech">
+                        <span>FastAPI</span>
+                        <span>LangChain</span>
+                        <span>Automation</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Research & Awards -->
+        <section class="skills-section" style="padding-top: 50px;">
+            <h2 class="section-title">Research & Achievements</h2>
+            <div class="bento-grid">
+                <div class="bento-card wide">
+                    <div class="skill-category">Publications</div>
+                    <h3 style="margin-bottom: 12px; color: var(--text-primary);">Paperless Scholarship Disbursement System</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 16px;">Published in IJIRCCE, Vol. 12, Issue 12, Dec 2024. Utilizing AI and Cloud Technologies for PMSSS.</p>
+                </div>
+                <div class="bento-card">
+                    <div class="skill-category">Awards</div>
+                    <ul style="list-style: none; color: var(--text-secondary); font-size: 0.9rem;">
+                        <li style="margin-bottom: 12px;">🏆 <strong>1st Prize:</strong> Sai Intelliverse 2.0 (Best Paper for XAI Alzheimer's Framework)</li>
+                        <li style="margin-bottom: 12px;">🥈 <strong>2nd Prize:</strong> Project Expo (Self-Organizing Quantum States)</li>
+                        <li>📦 <strong>Open Source:</strong> Quantum-XAI Library published on PyPI</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact / Footer -->
+        <footer id="contact">
+            <div class="footer-content">
+                <span class="hero-label">What's Next?</span>
+                <h2>Let's Build Something Together</h2>
+                <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;">
+                    I'm currently looking for new opportunities in AI Engineering and Full-Stack Development. 
+                    Whether you have a question or just want to say hi, my inbox is always open.
+                </p>
+                <a href="mailto:harshagowda2318@gmail.com" class="btn btn-primary" style="margin-top: 32px;">
+                    Say Hello <i data-lucide="mail" style="width: 18px;"></i>
+                </a>
+
+                <div class="social-links">
+                    <a href="https://github.com/Harsha2318" target="_blank" class="social-link"><i data-lucide="github" style="width: 24px;"></i></a>
+                    <a href="https://linkedin.com/in/harsha-p-b02775250" target="_blank" class="social-link"><i data-lucide="linkedin" style="width: 24px;"></i></a>
+                    <a href="https://harsha2318.me" target="_blank" class="social-link"><i data-lucide="globe" style="width: 24px;"></i></a>
+                    <a href="tel:+919606040340" class="social-link"><i data-lucide="phone" style="width: 24px;"></i></a>
+                </div>
+
+                <div class="copyright">
+                    Designed & Built by Harsha P © 2026
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Project Modal Template -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <h2 id="modalTitle" style="font-size: 1.8rem; margin-bottom: 8px;">Project Title</h2>
+                    <div id="modalTech" class="project-tech" style="margin-bottom: 16px;"></div>
+                </div>
+                <button class="close-modal" onclick="closeModal()">
+                    <i data-lucide="x" style="width: 24px;"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic Content -->
+            </div>
+            <div style="padding: 0 32px 32px;">
+                <a id="modalLink" href="#" target="_blank" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+                    View Source Code <i data-lucide="github" style="width: 18px;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Project Data
+        const projects = {
+            satellite: {
+                title: "Satellite Image Change Detection",
+                tech: ["PyTorch", "Docker", "Computer Vision", "H100 GPU", "Bhoonidhi API"],
+                problem: "Manual analysis of satellite imagery for environmental change is slow, error-prone, and doesn't scale for large geographical areas.",
+                role: "AI Engineer Intern @ X Boson AI (AI Grand Challenge PS-10)",
+                process: [
+                    "Processed large-scale Bhoonidhi and Copernicus datasets using tile-based deep learning approaches.",
+                    "Collaborated with cross-functional teams to optimize model inference for production deployment.",
+                    "Containerized the entire pipeline using Docker to ensure reproducibility on H100 GPU infrastructure."
+                ],
+                results: [
+                    { label: "Deployment", value: "IIT Delhi On-Site" },
+                    { label: "Infrastructure", value: "NVIDIA H100 GPU" },
+                    { label: "Dataset", value: "Bhoonidhi + Copernicus" }
+                ],
+                link: "https://github.com/Harsha2318"
+            },
+            quantum: {
+                title: "Quantum-XAI Library",
+                tech: ["Python", "Qiskit", "SHAP", "Machine Learning", "PyPI"],
+                problem: "Quantum Machine Learning models are often 'black boxes,' making it difficult to trust their decisions in critical applications.",
+                role: "Independent Researcher & Open Source Contributor",
+                process: [
+                    "Developed a specialized Python library translating complex quantum circuit parameters into human-readable feature importance metrics.",
+                    "Implemented variational quantum algorithms and integrated SHAP values for model interpretability.",
+                    "Packaged and published the library to PyPI for community access."
+                ],
+                results: [
+                    { label: "Status", value: "Published on PyPI" },
+                    { label: "Focus", value: "Explainable AI (XAI)" },
+                    { label: "Award", value: "2nd Prize Project Expo" }
+                ],
+                link: "https://github.com/Harsha2318/QUANTUM-XAI-library"
+            },
+            legal: {
+                title: "Legal Reference Bot (RAG)",
+                tech: ["LangChain", "FAISS", "RAG", "Vector DB", "LLM"],
+                problem: "Legal professionals struggle to quickly synthesize information from vast, unstructured legal documents without hallucinations.",
+                role: "Full-Stack AI Developer",
+                process: [
+                    "Built a Retrieval-Augmented Generation (RAG) system using LangChain and FAISS vector store.",
+                    "Implemented advanced document parsing and strict citation grounding to minimize LLM hallucinations.",
+                    "Designed a user interface for context-aware legal reference retrieval."
+                ],
+                results: [
+                    { label: "Accuracy", value: "High Citation Grounding" },
+                    { label: "Tech", value: "FAISS Vector Search" },
+                    { label: "Impact", value: "Reduced Research Time" }
+                ],
+                link: "https://github.com/Harsha2318/Legal-Reference-Bot"
+            },
+            techsync: {
+                title: "TechSync Work Order System",
+                tech: ["Java", "Spring Boot", "SQLite", "Docker", "Offline-First"],
+                problem: "Field technicians often work in areas with poor connectivity, leading to data loss and synchronization issues in work order management.",
+                role: "Backend Engineer",
+                process: [
+                    "Designed an offline-first architecture with a robust sync queue and local SQLite persistence layer.",
+                    "Developed comprehensive REST APIs for CRUD operations and system metrics monitoring.",
+                    "Containerized the application with Docker for consistent cross-environment deployments."
+                ],
+                results: [
+                    { label: "Reliability", value: "100% Offline Capability" },
+                    { label: "Sync", value: "Automatic Queueing" },
+                    { label: "Deploy", value: "Dockerized" }
+                ],
+                link: "https://github.com/Harsha2318/TechSync"
+            },
+            bharat: {
+                title: "Bharat AI Chatbot",
+                tech: ["Flask", "React", "MongoDB", "Redis", "JWT"],
+                problem: "Need for a scalable, multilingual AI chatbot platform that could handle concurrent users securely.",
+                role: "AI Full-Stack Developer (Contract)",
+                process: [
+                    "Developed end-to-end full-stack solution connecting React frontend with Flask backend.",
+                    "Integrated LLM workflows with secure JWT authentication and Redis caching for performance.",
+                    "Delivered a fully functional MVP on schedule meeting all client requirements."
+                ],
+                results: [
+                    { label: "Delivery", value: "On Schedule MVP" },
+                    { label: "Security", value: "JWT + RBAC" },
+                    { label: "Performance", value: "Redis Caching" }
+                ],
+                link: "#"
+            },
+            hidevs: {
+                title: "HiDevs Workflow Automation",
+                tech: ["FastAPI", "LangChain", "Automation", "LLM"],
+                problem: "Manual content generation workflows (blogs, emails) were consuming significant engineering time.",
+                role: "Generative AI Developer Intern",
+                process: [
+                    "Built backend REST APIs using FastAPI to integrate LangChain LLM workflows.",
+                    "Automated 3 core content workflows including blog generation and email drafting.",
+                    "Improved application reliability across internal tools through standardized AI agents."
+                ],
+                results: [
+                    { label: "Time Saved", value: "10+ Hours/Week" },
+                    { label: "Workflows", value: "3 Core Automated" },
+                    { label: "Stack", value: "FastAPI + LangChain" }
+                ],
+                link: "#"
+            }
+        };
+
+        // Modal Logic
+        const modal = document.getElementById('projectModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalTech = document.getElementById('modalTech');
+        const modalBody = document.getElementById('modalBody');
+        const modalLink = document.getElementById('modalLink');
+
+        function openModal(projectKey) {
+            const data = projects[projectKey];
+            
+            modalTitle.innerText = data.title;
+            modalLink.href = data.link;
+            
+            // Render Tech Pills
+            modalTech.innerHTML = data.tech.map(t => `<span>${t}</span>`).join('');
+            
+            // Render Body
+            let metricsHtml = data.results.map(r => `
+                <div class="metric-card">
+                    <span class="metric-value">${r.value}</span>
+                    <span class="metric-label">${r.label}</span>
+                </div>
+            `).join('');
+
+            let processHtml = data.process.map(p => `<li>${p}</li>`).join('');
+
+            modalBody.innerHTML = `
+                <div class="modal-section">
+                    <h4>The Problem</h4>
+                    <p>${data.problem}</p>
+                </div>
+                <div class="modal-section">
+                    <h4>My Role</h4>
+                    <p>${data.role}</p>
+                </div>
+                <div class="modal-section">
+                    <h4>The Process</h4>
+                    <ul>${processHtml}</ul>
+                </div>
+                <div class="modal-section">
+                    <h4>Measurable Results</h4>
+                    <div class="metric-grid">${metricsHtml}</div>
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
