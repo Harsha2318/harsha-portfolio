@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Harsha P - AI Engineer specializing in LLM workflows, RAG pipelines, and full-stack solutions deployed on H100 GPUs at IIT Delhi">
+    <meta name="keywords" content="AI Engineer, Machine Learning, Full-Stack Developer, LangChain, RAG, Python, Java, Spring Boot">
+    <meta name="author" content="Harsha P">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Harsha P | AI Engineer">
+    <meta property="og:description" content="Building AI Systems That Ship to Production">
+    <meta property="og:type" content="website">
+    
+    <title>Harsha P | AI Engineer</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            /* Colors - Dark Mode Tech Aesthetic */
+            --bg-primary: #0a0a0b;
+            --bg-secondary: #161618;
+            --bg-tertiary: #232326;
+            
+            --text-primary: #f4f4f5;
+            --text-secondary: #a1a1aa;
+            --text-tertiary: #71717a;
+            
+            --accent-primary: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --accent-success: #10b981;
+            --accent-warning: #f59e0b;
+            
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-default: rgba(255, 255, 255, 0.12);
+            
+            /* Typography */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            /* Spacing */
+            --section-padding: clamp(4rem, 8vw, 8rem);
+            --container-max: 1200px;
+        }
+
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Accessibility: Focus states */
+        :focus-visible {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+        }
+
+        /* Selection */
+        ::selection {
+            background-color: var(--accent-primary);
+            color: white;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--text-primary);
+        }
+
+        code, .mono {
+            font-family: var(--font-mono);
+            font-size: 0.875em;
+        }
+
+        /* ===== LAYOUT UTILITIES ===== */
+        .container {
+            width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: var(--section-padding) 0;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 11, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(10, 10, 11, 0.95);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .nav-logo span {
+            color: var(--accent-primary);
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-cta {
+            display: none;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--border-default);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            .nav-cta {
+                display: block;
+            }
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.75rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-title {
+            margin-bottom: 1.5rem;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.125rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-default);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-secondary);
+            background: var(--bg-secondary);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border-subtle);
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .stat-item h4 {
+            font-size: 2rem;
+            color: var(--accent-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-item p {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+
+        @media (min-width: 768px) {
+            .hero-stats {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            max-width: 600px;
+            color: var(--text-secondary);
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-grid {
+            display: grid;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+                align-items: start;
+            }
+        }
+
+        .about-text {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about-text strong {
+            color: var(--text-primary);
+        }
+
+        .about-highlights {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .highlight-card {
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1);
+        }
+
+        .highlight-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-glow);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--accent-primary);
+        }
+
+        .highlight-card h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-card p {
+            font-size: 0.875rem;
+            margin-bottom: 0;
+        }
+
+        /* ===== SKILLS SECTION ===== */
+        .skills-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .skills-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .skill-category {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: var(--border-default);
+        }
+
+        .skill-category h4 {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.375rem 0.75rem;
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag[data-level="expert"] {
+            color: var(--accent-primary);
+            background: var(--accent-glow);
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+        }
+
+        .skill-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .skill-dot.expert { background: var(--accent-primary); }
+        .skill-dot.advanced { background: var(--accent-warning); }
+        .skill-dot.intermediate { background: var(--text-tertiary); }
+
+        /* ===== EXPERIENCE SECTION ===== */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-subtle);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2.375rem;
+            top: 0.25rem;
+            width: 1rem;
+            height: 1rem;
+            background: var(--bg-primary);
+            border: 2px solid var(--accent-primary);
+            border-radius: 50%;
+        }
+
+        .timeline-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--border-default);
+            transform: translateX(4px);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .timeline-role {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .timeline-company {
+            color: var(--accent-primary);
+        }
+
+        .timeline-date {
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            color: var(--text-tertiary);
+        }
+
+        .timeline-location {
+            font-size: 0.8125rem;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-list {
+            list-style: none;
+        }
+
+        .timeline-list li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .timeline-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        .projects-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--border-default);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.1);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-glow);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .project-link {
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+
+        .project-link:hover {
+            color: var(--text-primary);
+        }
+
+        .project-title {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech span {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            padding: 0.25rem 0.5rem;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+        }
+
+        .project-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .metric {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-size: 0.8125rem;
+            color: var(--accent-success);
+        }
+
+        /* ===== RESEARCH SECTION ===== */
+        .research-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .research-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .research-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .research-card:hover {
+            border-color: var(--border-default);
+        }
+
+        .research-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--accent-glow);
+            color: var(--accent-primary);
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-radius: 9999px;
+            margin-bottom: 1rem;
+        }
+
+        .research-title {
+            font-size: 1.0625rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-desc {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-title {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-desc {
+            font-size: 1.125rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        @media (min-width: 640px) {
+            .contact-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .social-link {
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-subtle);
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+
+        /* ===== MODAL ===== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-default);
+            border-radius: 16px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            position: relative;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .stat-item h4 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="nav-logo">harsha<span>.p</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#research">Research</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">Let's Talk</a>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    <span>Available for opportunities</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Building AI Systems That<br>
+                    <span style="color: var(--accent-primary);">Ship to Production</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    AI Engineer specializing in LLM workflows, RAG pipelines, and full-stack solutions—deployed on H100 GPUs at IIT Delhi, published on PyPI, and powering real-world products.
+                </p>
+                
+                <div class="hero-cta-group">
+                    <a href="#projects" class="btn btn-primary">
+                        View Case Studies
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="/resume.pdf" class="btn btn-secondary" download>
+                        Download Resume
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h4>6+</h4>
+                        <p>Production Projects</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>3</h4>
+                        <p>AI Internships</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>10h+</h4>
+                        <p>Weekly Hours Saved</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>9.12</h4>
+                        <p>CGPA / 10</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">01. About Me</span>
+                <h2 class="section-title">Bridging Research & Deployment</h2>
+                <p class="section-desc">
+                    From quantum ML to satellite imagery—I productionize AI systems that deliver measurable impact.
+                </p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-text animate-on-scroll">
+                    <p>
+                        I'm an <strong>AI Engineer and Full-Stack Developer</strong> specializing in <strong>production-grade LLM systems</strong> and <strong>scalable backend architectures</strong>. Currently completing my B.E. in Computer Science (9.12 CGPA) at Sri Venkateshwara College of Engineering.
+                    </p>
+                    <p>
+                        I've deployed satellite image change detection pipelines on <strong>H100 GPUs at IIT Delhi</strong>, built multilingual AI chatbots serving real users, and published a <strong>Quantum-XAI library on PyPI</strong>. My work focuses on bridging research and deployment—automating 10+ hours of manual work weekly through intelligent RAG workflows, LangGraph agents, and robust Spring Boot microservices.
+                    </p>
+                    <p>
+                        When I'm not engineering AI systems, I'm contributing to open-source, writing technical papers, or exploring the intersection of quantum computing and explainable AI.
+                    </p>
+                </div>
+                
+                <div class="about-highlights animate-on-scroll">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h4>Production Deployments</h4>
+                        <p>Dockerized GPU inference at IIT Delhi, AWS cloud infrastructure, CI/CD pipelines</p>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <h4>Automation Impact</h4>
+                        <p>10+ hours/week saved through intelligent workflow automation and AI agents</p>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
+                        <h4>Published Research</h4>
+                        <p>IJIRCCE paper, PyPI library, Best Paper award at Sai Intelliverse 2.0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">02. Technical Skills</span>
+                <h2 class="section-title">Tools & Technologies</h2>
+                <p class="section-desc">
+                    A curated stack refined through production deployments and research projects.
+                </p>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-category animate-on-scroll">
+                    <h4>Programming Languages</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag" data-level="expert">
+                            <span class="skill-dot expert"></span>Python
+                        </span>
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>Java
+                        </span>
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>JavaScript
+                        </span>
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>SQL
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="skill-category animate-on-scroll">
+                    <h4>AI/ML & GenAI</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag" data-level="expert">
+                            <span class="skill-dot expert"></span>LangGraph
+                        </span>
+                        <span class="skill-tag" data-level="expert">
+                            <span class="skill-dot expert"></span>LangChain
+                        </span>
+                        <span class="skill-tag" data-level="expert">
+                            <span class="skill-dot expert"></span>RAG Workflows
+                        </span>
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>Computer Vision
+                        </span>
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>Prompt Engineering
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="skill-category animate-on-scroll">
+                    <h4>Cloud & DevOps</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>AWS
+                        </span>
+                        <span class="skill-tag" data-level="expert">
+                            <span class="skill-dot expert"></span>Docker
+                        </span>
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>Linux
+                        </span>
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>CI/CD Pipelines
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="skill-category animate-on-scroll">
+                    <h4>Backend & APIs</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag" data-level="expert">
+                            <span class="skill-dot expert"></span>Spring Boot
+                        </span>
+                        <span class="skill-tag" data-level="expert">
+                            <span class="skill-dot expert"></span>FastAPI
+                        </span>
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>Flask
+                        </span>
+                        <span class="skill-tag" data-level="expert">
+                            <span class="skill-dot expert"></span>REST APIs
+                        </span>
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>Microservices
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="skill-category animate-on-scroll">
+                    <h4>Databases</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>MySQL
+                        </span>
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>MongoDB
+                        </span>
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>Redis
+                        </span>
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>FAISS
+                        </span>
+                        <span class="skill-tag" data-level="intermediate">
+                            <span class="skill-dot intermediate"></span>SQLite
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="skill-category animate-on-scroll">
+                    <h4>Frontend</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>React
+                        </span>
+                        <span class="skill-tag" data-level="advanced">
+                            <span class="skill-dot advanced"></span>Next.js
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">03. Experience</span>
+                <h2 class="section-title">Where I've Worked</h2>
+                <p class="section-desc">
+                    Hands-on experience deploying AI systems in production environments.
+                </p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <span class="timeline-role">AI Engineer Intern</span>
+                                <span class="timeline-company">@ X Boson AI Private Limited</span>
+                            </div>
+                            <span class="timeline-date">Nov 2025 – Apr 2026</span>
+                        </div>
+                        <p class="timeline-location">Hybrid • Bengaluru, India</p>
+                        <ul class="timeline-list">
+                            <li>Engineered a <strong>Satellite Image Change Detection pipeline</strong> for the AI Grand Challenge (PS-10), utilizing tile-based deep learning on Bhoonidhi and Copernicus datasets</li>
+                            <li>Containerized the inference pipeline using Docker, successfully deploying the model on <strong>H100 GPU infrastructure</strong> during final evaluation at <strong>IIT Delhi</strong></li>
+                            <li>Collaborated within a cross-functional team to optimize model performance and reduce inference latency by 35%</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <span class="timeline-role">AI Full-Stack Developer (Contract)</span>
+                                <span class="timeline-company">@ Bharat AI (Bhaai)</span>
+                            </div>
+                            <span class="timeline-date">2025</span>
+                        </div>
+                        <p class="timeline-location">Team Collaboration</p>
+                        <ul class="timeline-list">
+                            <li>Developed and deployed a <strong>scalable AI chatbot platform</strong> delivering end-to-end full-stack solutions using Flask, React, and MongoDB</li>
+                            <li>Integrated LLM workflows and implemented secure JWT authentication with Redis caching</li>
+                            <li>Delivered fully functional MVP on schedule meeting all client requirements with multilingual support</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div>
+                                <span class="timeline-role">Generative AI Developer Intern</span>
+                                <span class="timeline-company">@ HiDevs Startup</span>
+                            </div>
+                            <span class="timeline-date">May 2025 – Sep 2025</span>
+                        </div>
+                        <p class="timeline-location">Remote</p>
+                        <ul class="timeline-list">
+                            <li>Developed backend REST APIs using FastAPI, integrating LangChain and LLM workflows to automate blog generation and email workflows</li>
+                            <li>Automated <strong>3 core content workflows</strong>, eliminating approximately <strong>10 hours of manual work per week</strong></li>
+                            <li>Improved application reliability across internal tools through robust error handling and monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">04. Projects</span>
+                <h2 class="section-title">Featured Work</h2>
+                <p class="section-desc">
+                    Production-ready systems solving real-world problems with measurable impact.
+                </p>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card animate-on-scroll" onclick="openModal('satellite')">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                                <path d="M2 12h20"/>
+                            </svg>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Harsha2318" target="_blank" class="project-link" onclick="event.stopPropagation()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Satellite Image Change Detection</h3>
+                    <p class="project-description">
+                        AI-powered pipeline for detecting land-use changes using tile-based deep learning on satellite imagery from Bhoonidhi and Copernicus datasets.
+                    </p>
+                    <div class="project-tech">
+                        <span>PyTorch</span>
+                        <span>Computer Vision</span>
+                        <span>Docker</span>
+                        <span>H100 GPU</span>
+                    </div>
+                    <div class="project-metrics">
+                        <span class="metric">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Deployed at IIT Delhi
+                        </span>
+                        <span class="metric">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            AI Grand Challenge PS-10
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card animate-on-scroll" onclick="openModal('bharat-ai')">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Harsha2318" target="_blank" class="project-link" onclick="event.stopPropagation()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Bharat AI (Bhaai) Chatbot</h3>
+                    <p class="project-description">
+                        Multilingual AI chatbot platform with secure authentication, Redis caching, and production-ready LLM integration serving real users.
+                    </p>
+                    <div class="project-tech">
+                        <span>Flask</span>
+                        <span>React</span>
+                        <span>MongoDB</span>
+                        <span>LangChain</span>
+                        <span>Redis</span>
+                        <span>JWT</span>
+                    </div>
+                    <div class="project-metrics">
+                        <span class="metric">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            MVP Delivered On Schedule
+                        </span>
+                        <span class="metric">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Multilingual Support
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card animate-on-scroll" onclick="openModal('techsync')">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20M2 12h20"/>
+                            </svg>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Harsha2318/TechSync" target="_blank" class="project-link" onclick="event.stopPropagation()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">TechSync - Work Order System</h3>
+                    <p class="project-description">
+                        Offline-first work order management system with robust sync queue and local persistence for seamless offline-to-online data synchronization.
+                    </p>
+                    <div class="project-tech">
+                        <span>Java</span>
+                        <span>Spring Boot</span>
+                        <span>SQLite</span>
+                        <span>Docker</span>
+                    </div>
+                    <div class="project-metrics">
+                        <span class="metric">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Offline-First Architecture
+                        </span>
+                        <span class="metric">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Docker Containerization
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card animate-on-scroll" onclick="openModal('quantum-xai')">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9z"/>
+                                <path d="M12 8v4l3 3"/>
+                            </svg>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Harsha2318/QUANTUM-XAI-library" target="_blank" class="project-link" onclick="event.stopPropagation()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Quantum-XAI Library</h3>
+                    <p class="project-description">
+                        Published PyPI library bridging Quantum Machine Learning and Explainable AI, translating quantum circuit parameters into human-readable feature importance.
+                    </p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Qiskit</span>
+                        <span>Quantum Computing</span>
+                        <span>SHAP</span>
+                        <span>XAI</span>
+                    </div>
+                    <div class="project-metrics">
+                        <span class="metric">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Published on PyPI
+                        </span>
+                        <span class="metric">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Variational Quantum Algorithms
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card animate-on-scroll" onclick="openModal('legal-bot')">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Harsha2318/Legal-Reference-Bot" target="_blank" class="project-link" onclick="event.stopPropagation()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Legal Reference Bot</h3>
+                    <p class="project-description">
+                        RAG-powered legal assistant using LangChain and FAISS to accurately retrieve and synthesize information from complex, unstructured legal documents.
+                    </p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>LangChain</span>
+                        <span>RAG</span>
+                        <span>FAISS</span>
+                        <span>LLM</span>
+                    </div>
+                    <div class="project-metrics">
+                        <span class="metric">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Minimized Hallucinations
+                        </span>
+                        <span class="metric">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Citation Grounding
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card animate-on-scroll" onclick="openModal('hidevs')">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Harsha2318" target="_blank" class="project-link" onclick="event.stopPropagation()">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">HiDevs AI Workflow Automation</h3>
+                    <p class="project-description">
+                        Backend REST APIs using FastAPI with LangChain integration to automate blog generation, email drafting, and user-facing AI features.
+                    </p>
+                    <div class="project-tech">
+                        <span>FastAPI</span>
+                        <span>LangChain</span>
+                        <span>LLM Workflows</span>
+                        <span>Automation</span>
+                    </div>
+                    <div class="project-metrics">
+                        <span class="metric">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            10+ Hours/Week Saved
+                        </span>
+                        <span class="metric">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            3 Core Workflows Automated
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-tag">05. Research & Achievements</span>
+                <h2 class="section-title">Publications & Awards</h2>
+                <p class="section-desc">
+                    Contributing to the AI community through research, competitions, and open-source.
+                </p>
+            </div>
+            
+            <div class="research-grid">
+                <div class="research-card animate-on-scroll">
+                    <span class="research-badge">Publication</span>
+                    <h3 class="research-title">Paperless Scholarship Disbursement System</h3>
+                    <p class="research-desc">
+                        Published in IJIRCCE, Vol. 12, Issue 12, Dec 2024. AI and Cloud Technologies for PMSSS scholarship automation.
+                    </p>
+                </div>
+                
+                <div class="research-card animate-on-scroll">
+                    <span class="research-badge">1st Prize - Best Paper</span>
+                    <h3 class="research-title">Explainable AI for Alzheimer's Detection</h3>
+                    <p class="research-desc">
+                        Sai Intelliverse 2.0 - Developed an XAI framework for early Alzheimer's disease detection with interpretable predictions.
+                    </p>
+                </div>
+                
+                <div class="research-card animate-on-scroll">
+                    <span class="research-badge">2nd Prize - Project Expo</span>
+                    <h3 class="research-title">Self-Organizing Quantum States</h3>
+                    <p class="research-desc">
+                        Research project exploring quantum state optimization and self-organization principles in quantum computing systems.
+                    </p>
+                </div>
+                
+                <div class="research-card animate-on-scroll">
+                    <span class="research-badge">Open Source</span>
+                    <h3 class="research-title">Quantum-XAI PyPI Library</h3>
+                    <p class="research-desc">
+                        Published Python library bridging Quantum Machine Learning and Explainable AI for transparent AI research.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-content animate-on-scroll">
+                <span class="section-tag">06. What's Next?</span>
+                <h2 class="contact-title">Let's Build Something Together</h2>
+                <p class="contact-desc">
+                    I'm currently seeking opportunities to apply my AI engineering skills in production environments. Whether you have a question, want to discuss a role, or just say hi—I'll do my best to respond!
+                </p>
+                
+                <div class="contact-buttons">
+                    <a href="mailto:harshagowda2318@gmail.com" class="btn btn-primary">
+                        Say Hello
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </a>
+                    <a href="/resume.pdf" class="btn btn-secondary" download>
+                        Download Resume
+                    </a>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://github.com/Harsha2318" target="_blank" class="social-link" aria-label="GitHub">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/harsha-p-b02775250" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:harshagowda2318@gmail.com" class="social-link" aria-label="Email">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </a>
+                    <a href="https://harsha2318.me" target="_blank" class="social-link" aria-label="Website">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                © 2026 Harsha P. Built with precision and purpose.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal Template -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()" aria-label="Close modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div class="modal-body" id="modalBody">
+                <!-- Content injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== DATA =====
+        const projectData = {
+            'satellite': {
+                title: 'Satellite Image Change Detection',
+                subtitle: 'AI Grand Challenge PS-10 | IIT Delhi',
+                problem: 'Detecting land-use changes from satellite imagery manually is time-consuming and error-prone. Traditional methods struggle with large-scale datasets like Bhoonidhi and Copernicus.',
+                role: 'AI Engineer Intern • Nov 2025 – Apr 2026 • Cross-functional Team',
+                process: [
+                    'Researched tile-based deep learning approaches for satellite imagery analysis',
+                    'Architected a scalable pipeline using PyTorch for change detection',
+                    'Implemented data preprocessing for Bhoonidhi and Copernicus datasets',
+                    'Containerized inference pipeline with Docker for H100 GPU deployment'
+                ],
+                solution: 'Built an end-to-end change detection pipeline that processes satellite tiles through a deep learning model, achieving accurate change identification with optimized inference on H100 GPUs.',
+                results: [
+                    'Successfully deployed on H100 GPU infrastructure at IIT Delhi',
+                    'Selected for AI Grand Challenge PS-10 final evaluation',
+                    'Achieved 35% reduction in inference latency through optimization',
+                    'Processed 10,000+ satellite tiles with high accuracy'
+                ],
+                tech: ['PyTorch', 'Computer Vision', 'Docker', 'H100 GPU', 'Bhoonidhi API', 'Copernicus']
+            },
+            'bharat-ai': {
+                title: 'Bharat AI (Bhaai) Chatbot Platform',
+                subtitle: 'Multilingual AI Assistant',
+                problem: 'Users needed a multilingual chatbot platform that could handle diverse queries while maintaining security and performance at scale.',
+                role: 'AI Full-Stack Developer (Contract) • 2025 • Team Collaboration',
+                process: [
+                    'Designed full-stack architecture with Flask backend and React frontend',
+                    'Integrated LangChain for LLM workflows and multilingual support',
+                    'Implemented JWT authentication and Redis caching for performance',
+                    'Deployed MVP with MongoDB for flexible data storage'
+                ],
+                solution: 'Delivered a production-ready multilingual chatbot platform with secure authentication, intelligent caching, and seamless LLM integration.',
+                results: [
+                    'MVP delivered on schedule meeting all client requirements',
+                    'Supported multiple Indian languages out of the box',
+                    'Achieved sub-200ms response times with Redis caching',
+                    'Zero security vulnerabilities in authentication flow'
+                ],
+                tech: ['Flask', 'React', 'MongoDB', 'LangChain', 'Redis', 'JWT', 'LLM']
+            },
+            'techsync': {
+                title: 'TechSync - Work Order Management',
+                subtitle: 'Offline-First Architecture',
+                problem: 'Field technicians needed a work order system that functions seamlessly offline and syncs reliably when connectivity returns.',
+                role: 'Full-Stack Developer • Personal Project',
+                process: [
+                    'Designed offline-first architecture with local SQLite persistence',
+                    'Implemented robust sync queue for conflict resolution',
+                    'Built comprehensive REST APIs for CRUD operations',
+                    'Containerized with Docker for consistent deployments'
+                ],
+                solution: 'Created a Spring Boot-based work order system with intelligent sync capabilities, ensuring data consistency across offline and online states.',
+                results: [
+                    '100% data integrity during offline-to-online transitions',
+                    'Docker containerization enabled one-command deployments',
+                    'Comprehensive API metrics for system monitoring',
+                    'Scalable architecture supporting future feature expansion'
+                ],
+                tech: ['Java', 'Spring Boot', 'SQLite', 'Docker', 'REST APIs', 'Sync Queue']
+            },
+            'quantum-xai': {
+                title: 'Quantum-XAI Library',
+                subtitle: 'Published on PyPI',
+                problem: 'Quantum Machine Learning models are black boxes. Researchers needed tools to interpret quantum circuit parameters and understand feature importance.',
+                role: 'Researcher & Developer • Open Source',
+                process: [
+                    'Researched variational quantum algorithms and XAI techniques',
+                    'Designed Python API for quantum circuit interpretation',
+                    'Integrated SHAP values for feature importance visualization',
+                    'Published package on PyPI with comprehensive documentation'
+                ],
+                solution: 'Developed a specialized Python library that translates complex quantum circuit parameters into human-readable feature importance metrics.',
+                results: [
+                    'Published on PyPI with growing adoption',
+                    'Enables transparent quantum ML research',
+                    'Integrated SHAP for industry-standard interpretability',
+                    'Contributed to trustworthy AI research community'
+                ],
+                tech: ['Python', 'Qiskit', 'Quantum Computing', 'SHAP', 'XAI', 'PyPI']
+            },
+            'legal-bot': {
+                title: 'Legal Reference Bot',
+                subtitle: 'RAG-Powered Legal Assistant',
+                problem: 'Legal professionals waste hours searching through unstructured legal documents. Generic LLMs hallucinate citations and provide unreliable legal references.',
+                role: 'AI Developer • Personal Project',
+                process: [
+                    'Researched RAG architectures for domain-specific QA',
+                    'Implemented advanced document parsing for legal texts',
+                    'Built FAISS vector index for efficient retrieval',
+                    'Enforced strict citation grounding to minimize hallucinations'
+                ],
+                solution: 'Created a Retrieval-Augmented Generation assistant that accurately retrieves and synthesizes information from complex legal documents with verified citations.',
+                results: [
+                    'Minimized LLM hallucinations through citation grounding',
+                    'Accurate retrieval from unstructured legal documents',
+                    'Context-aware responses with source verification',
+                    'Reduced legal research time by 60%'
+                ],
+                tech: ['Python', 'LangChain', 'RAG', 'FAISS', 'LLM', 'Vector DB']
+            },
+            'hidevs': {
+                title: 'HiDevs AI Workflow Automation',
+                subtitle: 'Content Generation Pipeline',
+                problem: 'Content teams spent 10+ hours weekly on repetitive tasks like blog drafting and email composition, reducing time for strategic work.',
+                role: 'Generative AI Developer Intern • May 2025 – Sep 2025',
+                process: [
+                    'Analyzed existing content workflows to identify automation opportunities',
+                    'Built FastAPI backend with LangChain integration',
+                    'Designed LLM prompts for blog and email generation',
+                    'Implemented monitoring and error handling for reliability'
+                ],
+                solution: 'Automated 3 core content workflows using AI, freeing up 10+ hours weekly for the content team while improving output consistency.',
+                results: [
+                    'Eliminated 10+ hours of manual work per week',
+                    'Automated 3 core content workflows',
+                    'Improved application reliability across internal tools',
+                    'Maintained brand voice consistency across generated content'
+                ],
+                tech: ['FastAPI', 'LangChain', 'LLM Workflows', 'Automation', 'Python']
+            }
+        };
+
+        // ===== NAVIGATION SCROLL EFFECT =====
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ===== SCROLL ANIMATIONS =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ===== MODAL FUNCTIONS =====
+        function openModal(projectId) {
+            const data = projectData[projectId];
+            if (!data) return;
+
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <span class="section-tag">${data.subtitle}</span>
+                <h2 style="margin-bottom: 1.5rem;">${data.title}</h2>
+                
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="font-size: 0.875rem; color: var(--text-tertiary); margin-bottom: 0.5rem;">MY ROLE</h4>
+                    <p>${data.role}</p>
+                </div>
+                
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="font-size: 0.875rem; color: var(--text-tertiary); margin-bottom: 0.5rem;">THE PROBLEM</h4>
+                    <p>${data.problem}</p>
+                </div>
+                
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="font-size: 0.875rem; color: var(--text-tertiary); margin-bottom: 0.5rem;">THE PROCESS</h4>
+                    <ul style="list-style: none; padding-left: 0;">
+                        ${data.process.map(step => `
+                            <li style="position: relative; padding-left: 1.25rem; margin-bottom: 0.5rem; color: var(--text-secondary);">
+                                <span style="position: absolute; left: 0; color: var(--accent-primary);">▹</span>
+                                ${step}
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+                
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="font-size: 0.875rem; color: var(--text-tertiary); margin-bottom: 0.5rem;">THE SOLUTION</h4>
+                    <p>${data.solution}</p>
+                </div>
+                
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="font-size: 0.875rem; color: var(--text-tertiary); margin-bottom: 1rem;">MEASURABLE RESULTS</h4>
+                    <div style="display: grid; gap: 0.75rem;">
+                        ${data.results.map(result => `
+                            <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-success);">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                                <span style="color: var(--text-secondary);">${result}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="font-size: 0.875rem; color: var(--text-tertiary); margin-bottom: 1rem;">TECH STACK</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        ${data.tech.map(t => `
+                            <span style="font-family: var(--font-mono); font-size: 0.75rem; padding: 0.25rem 0.75rem; background: var(--bg-tertiary); border-radius: 4px; color: var(--text-secondary);">
+                                ${t}
+                            </span>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('projectModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on overlay click
+        document.getElementById('projectModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
