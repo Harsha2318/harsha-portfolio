@@ -3,517 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Harsha P - AI Engineer specializing in LLM workflows, RAG pipelines, and full-stack solutions deployed on H100 GPUs at IIT Delhi">
-    <meta name="keywords" content="AI Engineer, Machine Learning, Full-Stack Developer, LangChain, RAG, Python, Java, Spring Boot">
-    <meta name="author" content="Harsha P">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Harsha P | AI Engineer">
-    <meta property="og:description" content="Building AI Systems That Ship to Production">
-    <meta property="og:type" content="website">
-    
-    <title>Harsha P | AI Engineer</title>
+    <title>Harsha P | AI Engineer & Full-Stack Developer</title>
+    <meta name="description" content="Portfolio of Harsha P - AI Engineer specializing in LLM workflows, RAG pipelines, and scalable backend systems.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
-        /* ===== CSS VARIABLES ===== */
+        /* --- CSS VARIABLES & RESET --- */
         :root {
-            /* Colors - Dark Mode Tech Aesthetic */
-            --bg-primary: #0a0a0b;
-            --bg-secondary: #161618;
-            --bg-tertiary: #232326;
-            
-            --text-primary: #f4f4f5;
-            --text-secondary: #a1a1aa;
-            --text-tertiary: #71717a;
-            
-            --accent-primary: #6366f1;
-            --accent-glow: rgba(99, 102, 241, 0.15);
-            --accent-success: #10b981;
-            --accent-warning: #f59e0b;
-            
+            --bg-dark: #09090b;
+            --bg-card: #18181b;
+            --bg-card-hover: #27272a;
             --border-subtle: rgba(255, 255, 255, 0.08);
-            --border-default: rgba(255, 255, 255, 0.12);
+            --border-highlight: rgba(255, 255, 255, 0.15);
             
-            /* Typography */
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            
+            --accent-primary: #6366f1; /* Indigo */
+            --accent-glow: rgba(99, 102, 241, 0.4);
+            --accent-success: #10b981;
+            
+            --font-sans: 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
             
-            /* Spacing */
-            --section-padding: clamp(4rem, 8vw, 8rem);
-            --container-max: 1200px;
+            --container-width: 1100px;
+            --header-height: 70px;
         }
 
-        /* ===== RESET & BASE ===== */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: var(--font-sans);
-            background-color: var(--bg-primary);
+            background-color: var(--bg-dark);
             color: var(--text-primary);
+            font-family: var(--font-sans);
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Accessibility: Focus states */
-        :focus-visible {
-            outline: 2px solid var(--accent-primary);
-            outline-offset: 2px;
+        /* --- UTILITIES --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
-        /* Selection */
-        ::selection {
-            background-color: var(--accent-primary);
-            color: white;
-        }
-
-        /* ===== TYPOGRAPHY ===== */
-        h1, h2, h3, h4 {
+        .section-title {
+            font-size: 1.5rem;
             font-weight: 600;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+        .section-title::after {
+            content: '';
+            height: 1px;
+            flex: 1;
+            background: var(--border-subtle);
+            max-width: 300px;
         }
 
-        h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-        }
-
-        h3 {
-            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-        }
-
-        p {
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            font-family: var(--font-mono);
+            border: 1px solid var(--border-subtle);
+            background: rgba(255,255,255,0.03);
             color: var(--text-secondary);
-            margin-bottom: 1rem;
+            transition: all 0.2s;
         }
 
-        a {
+        .badge:hover {
+            border-color: var(--accent-primary);
             color: var(--accent-primary);
-            text-decoration: none;
-            transition: color 0.2s ease;
+            background: rgba(99, 102, 241, 0.1);
         }
 
-        a:hover {
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--text-primary);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-subtle);
             color: var(--text-primary);
         }
 
-        code, .mono {
-            font-family: var(--font-mono);
-            font-size: 0.875em;
+        .btn-secondary:hover {
+            border-color: var(--text-secondary);
+            background: rgba(255,255,255,0.05);
         }
 
-        /* ===== LAYOUT UTILITIES ===== */
-        .container {
-            width: 100%;
-            max-width: var(--container-max);
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        section {
-            padding: var(--section-padding) 0;
-        }
-
-        /* ===== NAVIGATION ===== */
-        .nav {
+        /* --- BACKGROUND GRADIENTS --- */
+        .glow-bg {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(10, 10, 11, 0.8);
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .glow-blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.15;
+            filter: blur(80px);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .glow-blob:nth-child(1) { top: -200px; left: -200px; }
+        .glow-blob:nth-child(2) { bottom: -200px; right: -200px; animation-delay: -5s; background: radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%); }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 50px); }
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--header-height);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-subtle);
-            transition: all 0.3s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
         }
 
-        .nav.scrolled {
-            background: rgba(10, 10, 11, 0.95);
-        }
-
-        .nav-container {
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 4rem;
+            width: 100%;
         }
 
-        .nav-logo {
+        .logo {
             font-weight: 700;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
             color: var(--text-primary);
-        }
-
-        .nav-logo span {
-            color: var(--accent-primary);
+            text-decoration: none;
         }
 
         .nav-links {
-            display: none;
-            gap: 2rem;
-            list-style: none;
+            display: flex;
+            gap: 32px;
         }
 
         .nav-links a {
             color: var(--text-secondary);
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
         }
 
         .nav-links a:hover {
             color: var(--text-primary);
         }
 
-        .nav-cta {
-            display: none;
-            padding: 0.5rem 1rem;
-            background: transparent;
-            border: 1px solid var(--border-default);
-            border-radius: 6px;
-            color: var(--text-primary);
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
         }
 
-        .nav-cta:hover {
-            border-color: var(--accent-primary);
-            color: var(--accent-primary);
-        }
-
-        .mobile-menu-btn {
-            display: block;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .nav-links {
-                display: flex;
-            }
-            .nav-cta {
-                display: block;
-            }
-            .mobile-menu-btn {
-                display: none;
-            }
-        }
-
-        /* ===== HERO SECTION ===== */
+        /* --- HERO SECTION --- */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            opacity: 0.5;
-            pointer-events: none;
+            padding-top: calc(var(--header-height) + 80px);
+            padding-bottom: 100px;
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 800px;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.375rem 0.75rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-subtle);
-            border-radius: 9999px;
-            font-size: 0.75rem;
+        .hero-label {
+            font-family: var(--font-mono);
+            color: var(--accent-primary);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            background: linear-gradient(to right, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-badge-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--accent-success);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .hero-title {
-            margin-bottom: 1.5rem;
-            animation: slideUp 0.8s ease-out;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.125rem, 2vw, 1.25rem);
-            color: var(--text-secondary);
-            max-width: 650px;
-            margin-bottom: 2.5rem;
-            animation: slideUp 0.8s ease-out 0.2s both;
-        }
-
-        .hero-cta-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            animation: slideUp 0.8s ease-out 0.4s both;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 0.9375rem;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--accent-primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #4f46e5;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid var(--border-default);
-            color: var(--text-primary);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--text-secondary);
-            background: var(--bg-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
         }
 
         .hero-stats {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 4rem;
-            padding-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+            padding-top: 40px;
             border-top: 1px solid var(--border-subtle);
-            animation: fadeIn 1s ease-out 0.6s both;
         }
 
-        .stat-item h4 {
+        .stat-item h3 {
             font-size: 2rem;
-            color: var(--accent-primary);
-            margin-bottom: 0.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
         }
 
         .stat-item p {
             font-size: 0.875rem;
-            color: var(--text-tertiary);
+            color: var(--text-muted);
+            margin: 0;
         }
 
-        @media (min-width: 768px) {
-            .hero-stats {
-                grid-template-columns: repeat(4, 1fr);
-            }
+        /* --- BENTO GRID SKILLS --- */
+        .skills-section {
+            padding: 100px 0;
         }
 
-        /* ===== SECTION HEADERS ===== */
-        .section-header {
-            margin-bottom: 3rem;
-        }
-
-        .section-tag {
-            display: inline-block;
-            font-family: var(--font-mono);
-            font-size: 0.875rem;
-            color: var(--accent-primary);
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            margin-bottom: 1rem;
-        }
-
-        .section-desc {
-            max-width: 600px;
-            color: var(--text-secondary);
-        }
-
-        /* ===== ABOUT SECTION ===== */
-        .about-grid {
+        .bento-grid {
             display: grid;
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
         }
 
-        @media (min-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr 1fr;
-                align-items: start;
-            }
-        }
-
-        .about-text {
-            font-size: 1.0625rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-        }
-
-        .about-text strong {
-            color: var(--text-primary);
-        }
-
-        .about-highlights {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .highlight-card {
-            padding: 1.5rem;
-            background: var(--bg-secondary);
+        .bento-card {
+            background: var(--bg-card);
             border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            transition: all 0.3s ease;
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
-        .highlight-card:hover {
-            border-color: var(--accent-primary);
+        .bento-card:hover {
+            border-color: var(--border-highlight);
             transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1);
         }
 
-        .highlight-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--accent-glow);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            color: var(--accent-primary);
+        .bento-card.wide {
+            grid-column: span 2;
         }
 
-        .highlight-card h4 {
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-card p {
-            font-size: 0.875rem;
-            margin-bottom: 0;
-        }
-
-        /* ===== SKILLS SECTION ===== */
-        .skills-grid {
-            display: grid;
-            gap: 2rem;
-        }
-
-        @media (min-width: 640px) {
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .skills-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        @media (max-width: 768px) {
+            .bento-card.wide { grid-column: span 1; }
         }
 
         .skill-category {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent-primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .skill-category:hover {
-            border-color: var(--border-default);
-        }
-
-        .skill-category h4 {
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-
-        .skill-tags {
+        .skill-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 12px;
         }
 
-        .skill-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.375rem;
-            padding: 0.375rem 0.75rem;
-            background: var(--bg-tertiary);
+        .skill-pill {
+            background: rgba(255,255,255,0.05);
+            padding: 8px 16px;
             border-radius: 6px;
-            font-size: 0.8125rem;
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            transition: all 0.2s ease;
+            border: 1px solid transparent;
         }
 
-        .skill-tag[data-level="expert"] {
-            color: var(--accent-primary);
-            background: var(--accent-glow);
+        .skill-pill.expert {
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+            background: rgba(99, 102, 241, 0.1);
         }
 
-        .skill-tag:hover {
-            transform: translateY(-2px);
+        /* --- EXPERIENCE TIMELINE --- */
+        .experience-section {
+            padding: 100px 0;
         }
 
-        .skill-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-        }
-
-        .skill-dot.expert { background: var(--accent-primary); }
-        .skill-dot.advanced { background: var(--accent-warning); }
-        .skill-dot.intermediate { background: var(--text-tertiary); }
-
-        /* ===== EXPERIENCE SECTION ===== */
         .timeline {
             position: relative;
-            padding-left: 2rem;
+            max-width: 800px;
         }
 
         .timeline::before {
@@ -521,14 +342,15 @@
             position: absolute;
             left: 0;
             top: 0;
-            bottom: 0;
-            width: 2px;
+            height: 100%;
+            width: 1px;
             background: var(--border-subtle);
         }
 
         .timeline-item {
             position: relative;
-            padding-bottom: 3rem;
+            padding-left: 40px;
+            padding-bottom: 60px;
         }
 
         .timeline-item:last-child {
@@ -537,318 +359,144 @@
 
         .timeline-dot {
             position: absolute;
-            left: -2.375rem;
-            top: 0.25rem;
-            width: 1rem;
-            height: 1rem;
-            background: var(--bg-primary);
-            border: 2px solid var(--accent-primary);
+            left: -4px;
+            top: 6px;
+            width: 9px;
+            height: 9px;
             border-radius: 50%;
+            background: var(--bg-dark);
+            border: 2px solid var(--accent-primary);
+            z-index: 1;
         }
 
-        .timeline-content {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            border-color: var(--border-default);
-            transform: translateX(4px);
-        }
-
-        .timeline-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+        .timeline-date {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
         }
 
         .timeline-role {
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--text-primary);
         }
 
         .timeline-company {
             color: var(--accent-primary);
+            font-weight: 500;
         }
 
-        .timeline-date {
-            font-family: var(--font-mono);
-            font-size: 0.8125rem;
-            color: var(--text-tertiary);
-        }
-
-        .timeline-location {
-            font-size: 0.8125rem;
-            color: var(--text-tertiary);
-            margin-bottom: 1rem;
-        }
-
-        .timeline-list {
-            list-style: none;
-        }
-
-        .timeline-list li {
-            position: relative;
-            padding-left: 1.25rem;
-            margin-bottom: 0.75rem;
-            font-size: 0.9375rem;
+        .timeline-desc {
+            margin-top: 16px;
             color: var(--text-secondary);
-            line-height: 1.7;
+            font-size: 0.95rem;
         }
 
-        .timeline-list li::before {
+        .timeline-desc li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .timeline-desc li::before {
             content: '▹';
             position: absolute;
             left: 0;
             color: var(--accent-primary);
         }
 
-        /* ===== PROJECTS SECTION ===== */
-        .projects-grid {
-            display: grid;
-            gap: 1.5rem;
+        /* --- PROJECTS GRID --- */
+        .projects-section {
+            padding: 100px 0;
         }
 
-        @media (min-width: 768px) {
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
         }
 
         .project-card {
-            background: var(--bg-secondary);
+            background: var(--bg-card);
             border: 1px solid var(--border-subtle);
             border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-primary), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            group: project;
         }
 
         .project-card:hover {
-            border-color: var(--border-default);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.1);
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
+            border-color: var(--accent-primary);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
         }
 
         .project-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 1rem;
+            margin-bottom: 24px;
         }
 
-        .project-icon {
+        .folder-icon {
+            color: var(--accent-primary);
             width: 40px;
             height: 40px;
-            background: var(--accent-glow);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-primary);
         }
 
-        .project-links {
-            display: flex;
-            gap: 0.75rem;
+        .external-link {
+            color: var(--text-muted);
+            transition: color 0.2s;
         }
 
-        .project-link {
-            color: var(--text-secondary);
-            transition: color 0.2s ease;
-        }
-
-        .project-link:hover {
+        .external-link:hover {
             color: var(--text-primary);
         }
 
         .project-title {
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
         }
 
-        .project-description {
-            font-size: 0.9375rem;
+        .project-summary {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            flex-grow: 1;
         }
 
         .project-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-tech span {
+            gap: 12px;
             font-family: var(--font-mono);
-            font-size: 0.75rem;
-            color: var(--text-tertiary);
-            padding: 0.25rem 0.5rem;
-            background: var(--bg-tertiary);
-            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
 
-        .project-metrics {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-subtle);
-        }
-
-        .metric {
-            display: flex;
-            align-items: center;
-            gap: 0.375rem;
-            font-size: 0.8125rem;
-            color: var(--accent-success);
-        }
-
-        /* ===== RESEARCH SECTION ===== */
-        .research-grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .research-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .research-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .research-card:hover {
-            border-color: var(--border-default);
-        }
-
-        .research-badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            background: var(--accent-glow);
-            color: var(--accent-primary);
-            font-size: 0.75rem;
-            font-weight: 500;
-            border-radius: 9999px;
-            margin-bottom: 1rem;
-        }
-
-        .research-title {
-            font-size: 1.0625rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .research-desc {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-bottom: 0;
-        }
-
-        /* ===== CONTACT SECTION ===== */
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-title {
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-desc {
-            font-size: 1.125rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .contact-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        @media (min-width: 640px) {
-            .contact-buttons {
-                flex-direction: row;
-                justify-content: center;
-            }
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .social-link {
-            color: var(--text-secondary);
-            transition: all 0.2s ease;
-        }
-
-        .social-link:hover {
-            color: var(--accent-primary);
-            transform: translateY(-2px);
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            padding: 2rem 0;
-            border-top: 1px solid var(--border-subtle);
-            text-align: center;
-        }
-
-        .footer-text {
-            font-size: 0.875rem;
-            color: var(--text-tertiary);
-        }
-
-        /* ===== MODAL ===== */
+        /* --- MODAL --- */
         .modal-overlay {
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(4px);
-            z-index: 2000;
+            backdrop-filter: blur(8px);
+            z-index: 1000;
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 2rem;
+            align-items: center;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
+            padding: 20px;
         }
 
         .modal-overlay.active {
@@ -857,1065 +505,691 @@
         }
 
         .modal-content {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-default);
+            background: var(--bg-card);
+            border: 1px solid var(--border-highlight);
             border-radius: 16px;
-            max-width: 800px;
             width: 100%;
+            max-width: 800px;
             max-height: 90vh;
             overflow-y: auto;
-            padding: 2rem;
+            position: relative;
             transform: scale(0.95);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
         .modal-overlay.active .modal-content {
             transform: scale(1);
         }
 
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
+        .modal-header {
+            padding: 32px 32px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .close-modal {
             background: none;
             border: none;
             color: var(--text-secondary);
             cursor: pointer;
-            padding: 0.5rem;
-            transition: color 0.2s ease;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.2s;
         }
 
-        .modal-close:hover {
+        .close-modal:hover {
+            background: rgba(255,255,255,0.1);
             color: var(--text-primary);
         }
 
         .modal-body {
+            padding: 32px;
+        }
+
+        .modal-section {
+            margin-bottom: 32px;
+        }
+
+        .modal-section h4 {
+            font-family: var(--font-mono);
+            color: var(--accent-primary);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .modal-section p, .modal-section li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .modal-section li {
             position: relative;
+            padding-left: 24px;
+            margin-bottom: 8px;
         }
 
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .modal-section li::before {
+            content: '•';
+            color: var(--accent-primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
         }
 
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease-out;
+        .metric-card {
+            background: rgba(255,255,255,0.03);
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
         }
 
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-success);
+            display: block;
+            margin-bottom: 4px;
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 640px) {
-            .hero-stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-            
-            .stat-item h4 {
-                font-size: 1.5rem;
-            }
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .social-link {
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .social-link:hover {
+            color: var(--accent-primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 60px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-card-hover);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav" id="navbar">
-        <div class="container nav-container">
-            <a href="#" class="nav-logo">harsha<span>.p</span></a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#research">Research</a></li>
-            </ul>
-            <a href="#contact" class="nav-cta">Let's Talk</a>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 12h18M3 6h18M3 18h18"/>
-                </svg>
-            </button>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <!-- Background Glow -->
+    <div class="glow-bg">
+        <div class="glow-blob"></div>
+        <div class="glow-blob"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header>
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="hero-badge-dot"></span>
-                    <span>Available for opportunities</span>
+            <nav>
+                <a href="#" class="logo">harsha.dev</a>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
                 </div>
-                
-                <h1 class="hero-title">
-                    Building AI Systems That<br>
-                    <span style="color: var(--accent-primary);">Ship to Production</span>
-                </h1>
-                
-                <p class="hero-subtitle">
-                    AI Engineer specializing in LLM workflows, RAG pipelines, and full-stack solutions—deployed on H100 GPUs at IIT Delhi, published on PyPI, and powering real-world products.
+                <a href="resume.pdf" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.9rem;">Resume</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero" id="about">
+            <div class="hero-content">
+                <span class="hero-label">Hi, my name is</span>
+                <h1>Harsha P.</h1>
+                <h1 style="color: var(--text-secondary); font-size: clamp(2rem, 4vw, 3.5rem);">I build AI systems that ship.</h1>
+                <p>
+                    I'm an AI Engineer and Full-Stack Developer specializing in production-grade LLM systems, RAG pipelines, and scalable backend architectures. 
+                    From deploying satellite change detection on <strong>H100 GPUs at IIT Delhi</strong> to publishing quantum libraries on PyPI, I bridge the gap between research and real-world impact.
                 </p>
                 
-                <div class="hero-cta-group">
+                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
                     <a href="#projects" class="btn btn-primary">
-                        View Case Studies
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
+                        View Case Studies <i data-lucide="arrow-right" style="width: 18px;"></i>
                     </a>
-                    <a href="/resume.pdf" class="btn btn-secondary" download>
-                        Download Resume
+                    <a href="https://github.com/Harsha2318" target="_blank" class="btn btn-secondary">
+                        <i data-lucide="github" style="width: 18px;"></i> GitHub
                     </a>
                 </div>
-                
+
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <h4>6+</h4>
+                        <h3>9.12</h3>
+                        <p>CGPA / 10</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>6+</h3>
                         <p>Production Projects</p>
                     </div>
                     <div class="stat-item">
-                        <h4>3</h4>
+                        <h3>10h+</h3>
+                        <p>Weekly Saved via Automation</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>3</h3>
                         <p>AI Internships</p>
                     </div>
-                    <div class="stat-item">
-                        <h4>10h+</h4>
-                        <p>Weekly Hours Saved</p>
-                    </div>
-                    <div class="stat-item">
-                        <h4>9.12</h4>
-                        <p>CGPA / 10</p>
-                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">01. About Me</span>
-                <h2 class="section-title">Bridging Research & Deployment</h2>
-                <p class="section-desc">
-                    From quantum ML to satellite imagery—I productionize AI systems that deliver measurable impact.
-                </p>
-            </div>
-            
-            <div class="about-grid">
-                <div class="about-text animate-on-scroll">
-                    <p>
-                        I'm an <strong>AI Engineer and Full-Stack Developer</strong> specializing in <strong>production-grade LLM systems</strong> and <strong>scalable backend architectures</strong>. Currently completing my B.E. in Computer Science (9.12 CGPA) at Sri Venkateshwara College of Engineering.
-                    </p>
-                    <p>
-                        I've deployed satellite image change detection pipelines on <strong>H100 GPUs at IIT Delhi</strong>, built multilingual AI chatbots serving real users, and published a <strong>Quantum-XAI library on PyPI</strong>. My work focuses on bridging research and deployment—automating 10+ hours of manual work weekly through intelligent RAG workflows, LangGraph agents, and robust Spring Boot microservices.
-                    </p>
-                    <p>
-                        When I'm not engineering AI systems, I'm contributing to open-source, writing technical papers, or exploring the intersection of quantum computing and explainable AI.
-                    </p>
+        <!-- Skills Bento Grid -->
+        <section class="skills-section" id="skills">
+            <h2 class="section-title">Technical Arsenal</h2>
+            <div class="bento-grid">
+                <!-- Card 1 -->
+                <div class="bento-card wide">
+                    <div class="skill-category">AI & GenAI Engineering</div>
+                    <div class="skill-list">
+                        <span class="skill-pill expert">LangGraph</span>
+                        <span class="skill-pill expert">LangChain</span>
+                        <span class="skill-pill expert">RAG Workflows</span>
+                        <span class="skill-pill expert">LLM Fine-tuning</span>
+                        <span class="skill-pill">Prompt Engineering</span>
+                        <span class="skill-pill">Computer Vision</span>
+                        <span class="skill-pill">SHAP / XAI</span>
+                    </div>
                 </div>
                 
-                <div class="about-highlights animate-on-scroll">
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                            </svg>
-                        </div>
-                        <h4>Production Deployments</h4>
-                        <p>Dockerized GPU inference at IIT Delhi, AWS cloud infrastructure, CI/CD pipelines</p>
-                    </div>
-                    
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M12 6v6l4 2"/>
-                            </svg>
-                        </div>
-                        <h4>Automation Impact</h4>
-                        <p>10+ hours/week saved through intelligent workflow automation and AI agents</p>
-                    </div>
-                    
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                            </svg>
-                        </div>
-                        <h4>Published Research</h4>
-                        <p>IJIRCCE paper, PyPI library, Best Paper award at Sai Intelliverse 2.0</p>
+                <!-- Card 2 -->
+                <div class="bento-card">
+                    <div class="skill-category">Backend Systems</div>
+                    <div class="skill-list">
+                        <span class="skill-pill expert">Spring Boot</span>
+                        <span class="skill-pill expert">FastAPI</span>
+                        <span class="skill-pill expert">Microservices</span>
+                        <span class="skill-pill">REST APIs</span>
+                        <span class="skill-pill">JWT / RBAC</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">02. Technical Skills</span>
-                <h2 class="section-title">Tools & Technologies</h2>
-                <p class="section-desc">
-                    A curated stack refined through production deployments and research projects.
-                </p>
-            </div>
-            
-            <div class="skills-grid">
-                <div class="skill-category animate-on-scroll">
-                    <h4>Programming Languages</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag" data-level="expert">
-                            <span class="skill-dot expert"></span>Python
-                        </span>
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>Java
-                        </span>
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>JavaScript
-                        </span>
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>SQL
-                        </span>
+                <!-- Card 3 -->
+                <div class="bento-card">
+                    <div class="skill-category">Languages</div>
+                    <div class="skill-list">
+                        <span class="skill-pill expert">Python</span>
+                        <span class="skill-pill expert">Java</span>
+                        <span class="skill-pill">SQL</span>
+                        <span class="skill-pill">JavaScript</span>
+                        <span class="skill-pill">C</span>
                     </div>
                 </div>
-                
-                <div class="skill-category animate-on-scroll">
-                    <h4>AI/ML & GenAI</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag" data-level="expert">
-                            <span class="skill-dot expert"></span>LangGraph
-                        </span>
-                        <span class="skill-tag" data-level="expert">
-                            <span class="skill-dot expert"></span>LangChain
-                        </span>
-                        <span class="skill-tag" data-level="expert">
-                            <span class="skill-dot expert"></span>RAG Workflows
-                        </span>
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>Computer Vision
-                        </span>
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>Prompt Engineering
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="skill-category animate-on-scroll">
-                    <h4>Cloud & DevOps</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>AWS
-                        </span>
-                        <span class="skill-tag" data-level="expert">
-                            <span class="skill-dot expert"></span>Docker
-                        </span>
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>Linux
-                        </span>
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>CI/CD Pipelines
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="skill-category animate-on-scroll">
-                    <h4>Backend & APIs</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag" data-level="expert">
-                            <span class="skill-dot expert"></span>Spring Boot
-                        </span>
-                        <span class="skill-tag" data-level="expert">
-                            <span class="skill-dot expert"></span>FastAPI
-                        </span>
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>Flask
-                        </span>
-                        <span class="skill-tag" data-level="expert">
-                            <span class="skill-dot expert"></span>REST APIs
-                        </span>
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>Microservices
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="skill-category animate-on-scroll">
-                    <h4>Databases</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>MySQL
-                        </span>
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>MongoDB
-                        </span>
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>Redis
-                        </span>
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>FAISS
-                        </span>
-                        <span class="skill-tag" data-level="intermediate">
-                            <span class="skill-dot intermediate"></span>SQLite
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="skill-category animate-on-scroll">
-                    <h4>Frontend</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>React
-                        </span>
-                        <span class="skill-tag" data-level="advanced">
-                            <span class="skill-dot advanced"></span>Next.js
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">03. Experience</span>
-                <h2 class="section-title">Where I've Worked</h2>
-                <p class="section-desc">
-                    Hands-on experience deploying AI systems in production environments.
-                </p>
+                <!-- Card 4 -->
+                <div class="bento-card wide">
+                    <div class="skill-category">DevOps & Data</div>
+                    <div class="skill-list">
+                        <span class="skill-pill expert">Docker</span>
+                        <span class="skill-pill">AWS</span>
+                        <span class="skill-pill">CI/CD Pipelines</span>
+                        <span class="skill-pill">MySQL</span>
+                        <span class="skill-pill">MongoDB</span>
+                        <span class="skill-pill">Redis</span>
+                        <span class="skill-pill">FAISS (Vector DB)</span>
+                        <span class="skill-pill">Linux</span>
+                    </div>
+                </div>
             </div>
-            
+        </section>
+
+        <!-- Experience Timeline -->
+        <section class="experience-section" id="experience">
+            <h2 class="section-title">Where I've Worked</h2>
             <div class="timeline">
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <span class="timeline-role">AI Engineer Intern</span>
-                                <span class="timeline-company">@ X Boson AI Private Limited</span>
-                            </div>
-                            <span class="timeline-date">Nov 2025 – Apr 2026</span>
-                        </div>
-                        <p class="timeline-location">Hybrid • Bengaluru, India</p>
-                        <ul class="timeline-list">
-                            <li>Engineered a <strong>Satellite Image Change Detection pipeline</strong> for the AI Grand Challenge (PS-10), utilizing tile-based deep learning on Bhoonidhi and Copernicus datasets</li>
-                            <li>Containerized the inference pipeline using Docker, successfully deploying the model on <strong>H100 GPU infrastructure</strong> during final evaluation at <strong>IIT Delhi</strong></li>
-                            <li>Collaborated within a cross-functional team to optimize model performance and reduce inference latency by 35%</li>
-                        </ul>
-                    </div>
-                </div>
                 
-                <div class="timeline-item animate-on-scroll">
+                <!-- Role 1 -->
+                <div class="timeline-item">
                     <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <span class="timeline-role">AI Full-Stack Developer (Contract)</span>
-                                <span class="timeline-company">@ Bharat AI (Bhaai)</span>
-                            </div>
-                            <span class="timeline-date">2025</span>
-                        </div>
-                        <p class="timeline-location">Team Collaboration</p>
-                        <ul class="timeline-list">
-                            <li>Developed and deployed a <strong>scalable AI chatbot platform</strong> delivering end-to-end full-stack solutions using Flask, React, and MongoDB</li>
-                            <li>Integrated LLM workflows and implemented secure JWT authentication with Redis caching</li>
-                            <li>Delivered fully functional MVP on schedule meeting all client requirements with multilingual support</li>
-                        </ul>
-                    </div>
+                    <div class="timeline-date">Nov 2025 – Apr 2026</div>
+                    <h3 class="timeline-role">AI Engineer Intern <span class="timeline-company">@ X Boson AI</span></h3>
+                    <ul class="timeline-desc">
+                        <li>Engineered a Satellite Image Change Detection pipeline for the <strong>AI Grand Challenge (PS-10)</strong>, utilizing tile-based deep learning on Bhoonidhi and Copernicus datasets.</li>
+                        <li>Containerized the inference pipeline using Docker, successfully deploying the model on <strong>H100 GPU infrastructure</strong> during the final on-site evaluation at IIT Delhi.</li>
+                    </ul>
                 </div>
-                
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <span class="timeline-role">Generative AI Developer Intern</span>
-                                <span class="timeline-company">@ HiDevs Startup</span>
-                            </div>
-                            <span class="timeline-date">May 2025 – Sep 2025</span>
-                        </div>
-                        <p class="timeline-location">Remote</p>
-                        <ul class="timeline-list">
-                            <li>Developed backend REST APIs using FastAPI, integrating LangChain and LLM workflows to automate blog generation and email workflows</li>
-                            <li>Automated <strong>3 core content workflows</strong>, eliminating approximately <strong>10 hours of manual work per week</strong></li>
-                            <li>Improved application reliability across internal tools through robust error handling and monitoring</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">04. Projects</span>
-                <h2 class="section-title">Featured Work</h2>
-                <p class="section-desc">
-                    Production-ready systems solving real-world problems with measurable impact.
-                </p>
+                <!-- Role 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2025</div>
+                    <h3 class="timeline-role">AI Full-Stack Developer <span class="timeline-company">@ Bharat AI (Contract)</span></h3>
+                    <ul class="timeline-desc">
+                        <li>Developed a scalable AI chatbot platform delivering end-to-end full-stack solutions using Flask, React, and MongoDB.</li>
+                        <li>Integrated LLM workflows with secure JWT authentication and Redis caching, delivering a fully functional MVP on schedule.</li>
+                    </ul>
+                </div>
+
+                <!-- Role 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">May 2025 – Sep 2025</div>
+                    <h3 class="timeline-role">Generative AI Developer <span class="timeline-company">@ HiDevs Startup</span></h3>
+                    <ul class="timeline-desc">
+                        <li>Built backend REST APIs using FastAPI, integrating LangChain to automate blog generation and email workflows.</li>
+                        <li><strong>Impact:</strong> Automated 3 core content workflows, eliminating approx. <strong>10 hours of manual work per week</strong>.</li>
+                    </ul>
+                </div>
+
             </div>
-            
-            <div class="projects-grid">
+        </section>
+
+        <!-- Projects Grid -->
+        <section class="projects-section" id="projects">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="project-grid">
+                
                 <!-- Project 1 -->
-                <div class="project-card animate-on-scroll" onclick="openModal('satellite')">
+                <div class="project-card" onclick="openModal('satellite')">
                     <div class="project-header">
-                        <div class="project-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
-                                <path d="M2 12h20"/>
-                            </svg>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Harsha2318" target="_blank" class="project-link" onclick="event.stopPropagation()">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                                </svg>
-                            </a>
-                        </div>
+                        <i data-lucide="satellite" class="folder-icon"></i>
+                        <a href="https://github.com/Harsha2318" target="_blank" class="external-link"><i data-lucide="external-link"></i></a>
                     </div>
                     <h3 class="project-title">Satellite Image Change Detection</h3>
-                    <p class="project-description">
-                        AI-powered pipeline for detecting land-use changes using tile-based deep learning on satellite imagery from Bhoonidhi and Copernicus datasets.
-                    </p>
+                    <p class="project-summary">Deep learning pipeline for detecting environmental changes using tile-based processing on H100 GPUs.</p>
                     <div class="project-tech">
                         <span>PyTorch</span>
-                        <span>Computer Vision</span>
                         <span>Docker</span>
-                        <span>H100 GPU</span>
-                    </div>
-                    <div class="project-metrics">
-                        <span class="metric">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            Deployed at IIT Delhi
-                        </span>
-                        <span class="metric">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            AI Grand Challenge PS-10
-                        </span>
+                        <span>Computer Vision</span>
+                        <span>AWS</span>
                     </div>
                 </div>
-                
+
                 <!-- Project 2 -->
-                <div class="project-card animate-on-scroll" onclick="openModal('bharat-ai')">
+                <div class="project-card" onclick="openModal('quantum')">
                     <div class="project-header">
-                        <div class="project-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                            </svg>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Harsha2318" target="_blank" class="project-link" onclick="event.stopPropagation()">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                                </svg>
-                            </a>
-                        </div>
+                        <i data-lucide="atom" class="folder-icon"></i>
+                        <a href="https://github.com/Harsha2318/QUANTUM-XAI-library" target="_blank" class="external-link"><i data-lucide="external-link"></i></a>
                     </div>
-                    <h3 class="project-title">Bharat AI (Bhaai) Chatbot</h3>
-                    <p class="project-description">
-                        Multilingual AI chatbot platform with secure authentication, Redis caching, and production-ready LLM integration serving real users.
-                    </p>
+                    <h3 class="project-title">Quantum-XAI Library</h3>
+                    <p class="project-summary">A published Python library bridging Quantum Machine Learning and Explainable AI for transparent models.</p>
                     <div class="project-tech">
-                        <span>Flask</span>
-                        <span>React</span>
-                        <span>MongoDB</span>
-                        <span>LangChain</span>
-                        <span>Redis</span>
-                        <span>JWT</span>
-                    </div>
-                    <div class="project-metrics">
-                        <span class="metric">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            MVP Delivered On Schedule
-                        </span>
-                        <span class="metric">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            Multilingual Support
-                        </span>
+                        <span>Python</span>
+                        <span>Qiskit</span>
+                        <span>SHAP</span>
+                        <span>PyPI</span>
                     </div>
                 </div>
-                
+
                 <!-- Project 3 -->
-                <div class="project-card animate-on-scroll" onclick="openModal('techsync')">
+                <div class="project-card" onclick="openModal('legal')">
                     <div class="project-header">
-                        <div class="project-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2v20M2 12h20"/>
-                            </svg>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Harsha2318/TechSync" target="_blank" class="project-link" onclick="event.stopPropagation()">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                                </svg>
-                            </a>
-                        </div>
+                        <i data-lucide="scale" class="folder-icon"></i>
+                        <a href="https://github.com/Harsha2318/Legal-Reference-Bot" target="_blank" class="external-link"><i data-lucide="external-link"></i></a>
                     </div>
-                    <h3 class="project-title">TechSync - Work Order System</h3>
-                    <p class="project-description">
-                        Offline-first work order management system with robust sync queue and local persistence for seamless offline-to-online data synchronization.
-                    </p>
+                    <h3 class="project-title">Legal Reference Bot (RAG)</h3>
+                    <p class="project-summary">Retrieval-Augmented Generation assistant for accurate legal document synthesis with citation grounding.</p>
+                    <div class="project-tech">
+                        <span>LangChain</span>
+                        <span>FAISS</span>
+                        <span>RAG</span>
+                        <span>LLM</span>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card" onclick="openModal('techsync')">
+                    <div class="project-header">
+                        <i data-lucide="server" class="folder-icon"></i>
+                        <a href="https://github.com/Harsha2318/TechSync" target="_blank" class="external-link"><i data-lucide="external-link"></i></a>
+                    </div>
+                    <h3 class="project-title">TechSync Work Order System</h3>
+                    <p class="project-summary">Offline-first work-order management system with robust sync queue and local persistence layer.</p>
                     <div class="project-tech">
                         <span>Java</span>
                         <span>Spring Boot</span>
                         <span>SQLite</span>
                         <span>Docker</span>
                     </div>
-                    <div class="project-metrics">
-                        <span class="metric">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            Offline-First Architecture
-                        </span>
-                        <span class="metric">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            Docker Containerization
-                        </span>
-                    </div>
                 </div>
-                
-                <!-- Project 4 -->
-                <div class="project-card animate-on-scroll" onclick="openModal('quantum-xai')">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9z"/>
-                                <path d="M12 8v4l3 3"/>
-                            </svg>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Harsha2318/QUANTUM-XAI-library" target="_blank" class="project-link" onclick="event.stopPropagation()">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <h3 class="project-title">Quantum-XAI Library</h3>
-                    <p class="project-description">
-                        Published PyPI library bridging Quantum Machine Learning and Explainable AI, translating quantum circuit parameters into human-readable feature importance.
-                    </p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>Qiskit</span>
-                        <span>Quantum Computing</span>
-                        <span>SHAP</span>
-                        <span>XAI</span>
-                    </div>
-                    <div class="project-metrics">
-                        <span class="metric">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            Published on PyPI
-                        </span>
-                        <span class="metric">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            Variational Quantum Algorithms
-                        </span>
-                    </div>
-                </div>
-                
+
                 <!-- Project 5 -->
-                <div class="project-card animate-on-scroll" onclick="openModal('legal-bot')">
+                <div class="project-card" onclick="openModal('bharat')">
                     <div class="project-header">
-                        <div class="project-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            </svg>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Harsha2318/Legal-Reference-Bot" target="_blank" class="project-link" onclick="event.stopPropagation()">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                                </svg>
-                            </a>
-                        </div>
+                        <i data-lucide="message-square" class="folder-icon"></i>
+                        <a href="#" class="external-link"><i data-lucide="external-link"></i></a>
                     </div>
-                    <h3 class="project-title">Legal Reference Bot</h3>
-                    <p class="project-description">
-                        RAG-powered legal assistant using LangChain and FAISS to accurately retrieve and synthesize information from complex, unstructured legal documents.
-                    </p>
+                    <h3 class="project-title">Bharat AI Chatbot</h3>
+                    <p class="project-summary">Multilingual AI chatbot platform with secure authentication and real-time caching.</p>
                     <div class="project-tech">
-                        <span>Python</span>
-                        <span>LangChain</span>
-                        <span>RAG</span>
-                        <span>FAISS</span>
-                        <span>LLM</span>
-                    </div>
-                    <div class="project-metrics">
-                        <span class="metric">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            Minimized Hallucinations
-                        </span>
-                        <span class="metric">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            Citation Grounding
-                        </span>
+                        <span>Flask</span>
+                        <span>React</span>
+                        <span>MongoDB</span>
+                        <span>Redis</span>
                     </div>
                 </div>
-                
-                <!-- Project 6 -->
-                <div class="project-card animate-on-scroll" onclick="openModal('hidevs')">
+
+                 <!-- Project 6 -->
+                 <div class="project-card" onclick="openModal('hidevs')">
                     <div class="project-header">
-                        <div class="project-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                                <line x1="8" y1="21" x2="16" y2="21"/>
-                                <line x1="12" y1="17" x2="12" y2="21"/>
-                            </svg>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Harsha2318" target="_blank" class="project-link" onclick="event.stopPropagation()">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                                </svg>
-                            </a>
-                        </div>
+                        <i data-lucide="zap" class="folder-icon"></i>
+                        <a href="#" class="external-link"><i data-lucide="external-link"></i></a>
                     </div>
-                    <h3 class="project-title">HiDevs AI Workflow Automation</h3>
-                    <p class="project-description">
-                        Backend REST APIs using FastAPI with LangChain integration to automate blog generation, email drafting, and user-facing AI features.
-                    </p>
+                    <h3 class="project-title">HiDevs Workflow Automation</h3>
+                    <p class="project-summary">Automated content generation pipeline saving 10+ hours of manual work weekly.</p>
                     <div class="project-tech">
                         <span>FastAPI</span>
                         <span>LangChain</span>
-                        <span>LLM Workflows</span>
                         <span>Automation</span>
                     </div>
-                    <div class="project-metrics">
-                        <span class="metric">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            10+ Hours/Week Saved
-                        </span>
-                        <span class="metric">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                            3 Core Workflows Automated
-                        </span>
-                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Research Section -->
-    <section id="research">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <span class="section-tag">05. Research & Achievements</span>
-                <h2 class="section-title">Publications & Awards</h2>
-                <p class="section-desc">
-                    Contributing to the AI community through research, competitions, and open-source.
-                </p>
             </div>
-            
-            <div class="research-grid">
-                <div class="research-card animate-on-scroll">
-                    <span class="research-badge">Publication</span>
-                    <h3 class="research-title">Paperless Scholarship Disbursement System</h3>
-                    <p class="research-desc">
-                        Published in IJIRCCE, Vol. 12, Issue 12, Dec 2024. AI and Cloud Technologies for PMSSS scholarship automation.
-                    </p>
-                </div>
-                
-                <div class="research-card animate-on-scroll">
-                    <span class="research-badge">1st Prize - Best Paper</span>
-                    <h3 class="research-title">Explainable AI for Alzheimer's Detection</h3>
-                    <p class="research-desc">
-                        Sai Intelliverse 2.0 - Developed an XAI framework for early Alzheimer's disease detection with interpretable predictions.
-                    </p>
-                </div>
-                
-                <div class="research-card animate-on-scroll">
-                    <span class="research-badge">2nd Prize - Project Expo</span>
-                    <h3 class="research-title">Self-Organizing Quantum States</h3>
-                    <p class="research-desc">
-                        Research project exploring quantum state optimization and self-organization principles in quantum computing systems.
-                    </p>
-                </div>
-                
-                <div class="research-card animate-on-scroll">
-                    <span class="research-badge">Open Source</span>
-                    <h3 class="research-title">Quantum-XAI PyPI Library</h3>
-                    <p class="research-desc">
-                        Published Python library bridging Quantum Machine Learning and Explainable AI for transparent AI research.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <div class="contact-content animate-on-scroll">
-                <span class="section-tag">06. What's Next?</span>
-                <h2 class="contact-title">Let's Build Something Together</h2>
-                <p class="contact-desc">
-                    I'm currently seeking opportunities to apply my AI engineering skills in production environments. Whether you have a question, want to discuss a role, or just say hi—I'll do my best to respond!
-                </p>
-                
-                <div class="contact-buttons">
-                    <a href="mailto:harshagowda2318@gmail.com" class="btn btn-primary">
-                        Say Hello
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                    </a>
-                    <a href="/resume.pdf" class="btn btn-secondary" download>
-                        Download Resume
-                    </a>
+        <!-- Research & Awards -->
+        <section class="skills-section" style="padding-top: 50px;">
+            <h2 class="section-title">Research & Achievements</h2>
+            <div class="bento-grid">
+                <div class="bento-card wide">
+                    <div class="skill-category">Publications</div>
+                    <h3 style="margin-bottom: 12px; color: var(--text-primary);">Paperless Scholarship Disbursement System</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 16px;">Published in IJIRCCE, Vol. 12, Issue 12, Dec 2024. Utilizing AI and Cloud Technologies for PMSSS.</p>
                 </div>
-                
+                <div class="bento-card">
+                    <div class="skill-category">Awards</div>
+                    <ul style="list-style: none; color: var(--text-secondary); font-size: 0.9rem;">
+                        <li style="margin-bottom: 12px;">🏆 <strong>1st Prize:</strong> Sai Intelliverse 2.0 (Best Paper for XAI Alzheimer's Framework)</li>
+                        <li style="margin-bottom: 12px;">🥈 <strong>2nd Prize:</strong> Project Expo (Self-Organizing Quantum States)</li>
+                        <li>📦 <strong>Open Source:</strong> Quantum-XAI Library published on PyPI</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact / Footer -->
+        <footer id="contact">
+            <div class="footer-content">
+                <span class="hero-label">What's Next?</span>
+                <h2>Let's Build Something Together</h2>
+                <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;">
+                    I'm currently looking for new opportunities in AI Engineering and Full-Stack Development. 
+                    Whether you have a question or just want to say hi, my inbox is always open.
+                </p>
+                <a href="mailto:harshagowda2318@gmail.com" class="btn btn-primary" style="margin-top: 32px;">
+                    Say Hello <i data-lucide="mail" style="width: 18px;"></i>
+                </a>
+
                 <div class="social-links">
-                    <a href="https://github.com/Harsha2318" target="_blank" class="social-link" aria-label="GitHub">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                        </svg>
-                    </a>
-                    <a href="https://linkedin.com/in/harsha-p-b02775250" target="_blank" class="social-link" aria-label="LinkedIn">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                            <rect x="2" y="9" width="4" height="12"/>
-                            <circle cx="4" cy="4" r="2"/>
-                        </svg>
-                    </a>
-                    <a href="mailto:harshagowda2318@gmail.com" class="social-link" aria-label="Email">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                    </a>
-                    <a href="https://harsha2318.me" target="_blank" class="social-link" aria-label="Website">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="2" y1="12" x2="22" y2="12"/>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                        </svg>
-                    </a>
+                    <a href="https://github.com/Harsha2318" target="_blank" class="social-link"><i data-lucide="github" style="width: 24px;"></i></a>
+                    <a href="https://linkedin.com/in/harsha-p-b02775250" target="_blank" class="social-link"><i data-lucide="linkedin" style="width: 24px;"></i></a>
+                    <a href="https://harsha2318.me" target="_blank" class="social-link"><i data-lucide="globe" style="width: 24px;"></i></a>
+                    <a href="tel:+919606040340" class="social-link"><i data-lucide="phone" style="width: 24px;"></i></a>
+                </div>
+
+                <div class="copyright">
+                    Designed & Built by Harsha P © 2026
                 </div>
             </div>
-        </div>
-    </section>
+        </footer>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p class="footer-text">
-                © 2026 Harsha P. Built with precision and purpose.
-            </p>
-        </div>
-    </footer>
+    </main>
 
-    <!-- Modal Template -->
+    <!-- Project Modal Template -->
     <div class="modal-overlay" id="projectModal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()" aria-label="Close modal">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="6" x2="6" y2="18"/>
-                    <line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
-            </button>
+            <div class="modal-header">
+                <div>
+                    <h2 id="modalTitle" style="font-size: 1.8rem; margin-bottom: 8px;">Project Title</h2>
+                    <div id="modalTech" class="project-tech" style="margin-bottom: 16px;"></div>
+                </div>
+                <button class="close-modal" onclick="closeModal()">
+                    <i data-lucide="x" style="width: 24px;"></i>
+                </button>
+            </div>
             <div class="modal-body" id="modalBody">
-                <!-- Content injected via JavaScript -->
+                <!-- Dynamic Content -->
+            </div>
+            <div style="padding: 0 32px 32px;">
+                <a id="modalLink" href="#" target="_blank" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+                    View Source Code <i data-lucide="github" style="width: 18px;"></i>
+                </a>
             </div>
         </div>
     </div>
 
     <script>
-        // ===== DATA =====
-        const projectData = {
-            'satellite': {
-                title: 'Satellite Image Change Detection',
-                subtitle: 'AI Grand Challenge PS-10 | IIT Delhi',
-                problem: 'Detecting land-use changes from satellite imagery manually is time-consuming and error-prone. Traditional methods struggle with large-scale datasets like Bhoonidhi and Copernicus.',
-                role: 'AI Engineer Intern • Nov 2025 – Apr 2026 • Cross-functional Team',
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Project Data
+        const projects = {
+            satellite: {
+                title: "Satellite Image Change Detection",
+                tech: ["PyTorch", "Docker", "Computer Vision", "H100 GPU", "Bhoonidhi API"],
+                problem: "Manual analysis of satellite imagery for environmental change is slow, error-prone, and doesn't scale for large geographical areas.",
+                role: "AI Engineer Intern @ X Boson AI (AI Grand Challenge PS-10)",
                 process: [
-                    'Researched tile-based deep learning approaches for satellite imagery analysis',
-                    'Architected a scalable pipeline using PyTorch for change detection',
-                    'Implemented data preprocessing for Bhoonidhi and Copernicus datasets',
-                    'Containerized inference pipeline with Docker for H100 GPU deployment'
+                    "Processed large-scale Bhoonidhi and Copernicus datasets using tile-based deep learning approaches.",
+                    "Collaborated with cross-functional teams to optimize model inference for production deployment.",
+                    "Containerized the entire pipeline using Docker to ensure reproducibility on H100 GPU infrastructure."
                 ],
-                solution: 'Built an end-to-end change detection pipeline that processes satellite tiles through a deep learning model, achieving accurate change identification with optimized inference on H100 GPUs.',
                 results: [
-                    'Successfully deployed on H100 GPU infrastructure at IIT Delhi',
-                    'Selected for AI Grand Challenge PS-10 final evaluation',
-                    'Achieved 35% reduction in inference latency through optimization',
-                    'Processed 10,000+ satellite tiles with high accuracy'
+                    { label: "Deployment", value: "IIT Delhi On-Site" },
+                    { label: "Infrastructure", value: "NVIDIA H100 GPU" },
+                    { label: "Dataset", value: "Bhoonidhi + Copernicus" }
                 ],
-                tech: ['PyTorch', 'Computer Vision', 'Docker', 'H100 GPU', 'Bhoonidhi API', 'Copernicus']
+                link: "https://github.com/Harsha2318"
             },
-            'bharat-ai': {
-                title: 'Bharat AI (Bhaai) Chatbot Platform',
-                subtitle: 'Multilingual AI Assistant',
-                problem: 'Users needed a multilingual chatbot platform that could handle diverse queries while maintaining security and performance at scale.',
-                role: 'AI Full-Stack Developer (Contract) • 2025 • Team Collaboration',
+            quantum: {
+                title: "Quantum-XAI Library",
+                tech: ["Python", "Qiskit", "SHAP", "Machine Learning", "PyPI"],
+                problem: "Quantum Machine Learning models are often 'black boxes,' making it difficult to trust their decisions in critical applications.",
+                role: "Independent Researcher & Open Source Contributor",
                 process: [
-                    'Designed full-stack architecture with Flask backend and React frontend',
-                    'Integrated LangChain for LLM workflows and multilingual support',
-                    'Implemented JWT authentication and Redis caching for performance',
-                    'Deployed MVP with MongoDB for flexible data storage'
+                    "Developed a specialized Python library translating complex quantum circuit parameters into human-readable feature importance metrics.",
+                    "Implemented variational quantum algorithms and integrated SHAP values for model interpretability.",
+                    "Packaged and published the library to PyPI for community access."
                 ],
-                solution: 'Delivered a production-ready multilingual chatbot platform with secure authentication, intelligent caching, and seamless LLM integration.',
                 results: [
-                    'MVP delivered on schedule meeting all client requirements',
-                    'Supported multiple Indian languages out of the box',
-                    'Achieved sub-200ms response times with Redis caching',
-                    'Zero security vulnerabilities in authentication flow'
+                    { label: "Status", value: "Published on PyPI" },
+                    { label: "Focus", value: "Explainable AI (XAI)" },
+                    { label: "Award", value: "2nd Prize Project Expo" }
                 ],
-                tech: ['Flask', 'React', 'MongoDB', 'LangChain', 'Redis', 'JWT', 'LLM']
+                link: "https://github.com/Harsha2318/QUANTUM-XAI-library"
             },
-            'techsync': {
-                title: 'TechSync - Work Order Management',
-                subtitle: 'Offline-First Architecture',
-                problem: 'Field technicians needed a work order system that functions seamlessly offline and syncs reliably when connectivity returns.',
-                role: 'Full-Stack Developer • Personal Project',
+            legal: {
+                title: "Legal Reference Bot (RAG)",
+                tech: ["LangChain", "FAISS", "RAG", "Vector DB", "LLM"],
+                problem: "Legal professionals struggle to quickly synthesize information from vast, unstructured legal documents without hallucinations.",
+                role: "Full-Stack AI Developer",
                 process: [
-                    'Designed offline-first architecture with local SQLite persistence',
-                    'Implemented robust sync queue for conflict resolution',
-                    'Built comprehensive REST APIs for CRUD operations',
-                    'Containerized with Docker for consistent deployments'
+                    "Built a Retrieval-Augmented Generation (RAG) system using LangChain and FAISS vector store.",
+                    "Implemented advanced document parsing and strict citation grounding to minimize LLM hallucinations.",
+                    "Designed a user interface for context-aware legal reference retrieval."
                 ],
-                solution: 'Created a Spring Boot-based work order system with intelligent sync capabilities, ensuring data consistency across offline and online states.',
                 results: [
-                    '100% data integrity during offline-to-online transitions',
-                    'Docker containerization enabled one-command deployments',
-                    'Comprehensive API metrics for system monitoring',
-                    'Scalable architecture supporting future feature expansion'
+                    { label: "Accuracy", value: "High Citation Grounding" },
+                    { label: "Tech", value: "FAISS Vector Search" },
+                    { label: "Impact", value: "Reduced Research Time" }
                 ],
-                tech: ['Java', 'Spring Boot', 'SQLite', 'Docker', 'REST APIs', 'Sync Queue']
+                link: "https://github.com/Harsha2318/Legal-Reference-Bot"
             },
-            'quantum-xai': {
-                title: 'Quantum-XAI Library',
-                subtitle: 'Published on PyPI',
-                problem: 'Quantum Machine Learning models are black boxes. Researchers needed tools to interpret quantum circuit parameters and understand feature importance.',
-                role: 'Researcher & Developer • Open Source',
+            techsync: {
+                title: "TechSync Work Order System",
+                tech: ["Java", "Spring Boot", "SQLite", "Docker", "Offline-First"],
+                problem: "Field technicians often work in areas with poor connectivity, leading to data loss and synchronization issues in work order management.",
+                role: "Backend Engineer",
                 process: [
-                    'Researched variational quantum algorithms and XAI techniques',
-                    'Designed Python API for quantum circuit interpretation',
-                    'Integrated SHAP values for feature importance visualization',
-                    'Published package on PyPI with comprehensive documentation'
+                    "Designed an offline-first architecture with a robust sync queue and local SQLite persistence layer.",
+                    "Developed comprehensive REST APIs for CRUD operations and system metrics monitoring.",
+                    "Containerized the application with Docker for consistent cross-environment deployments."
                 ],
-                solution: 'Developed a specialized Python library that translates complex quantum circuit parameters into human-readable feature importance metrics.',
                 results: [
-                    'Published on PyPI with growing adoption',
-                    'Enables transparent quantum ML research',
-                    'Integrated SHAP for industry-standard interpretability',
-                    'Contributed to trustworthy AI research community'
+                    { label: "Reliability", value: "100% Offline Capability" },
+                    { label: "Sync", value: "Automatic Queueing" },
+                    { label: "Deploy", value: "Dockerized" }
                 ],
-                tech: ['Python', 'Qiskit', 'Quantum Computing', 'SHAP', 'XAI', 'PyPI']
+                link: "https://github.com/Harsha2318/TechSync"
             },
-            'legal-bot': {
-                title: 'Legal Reference Bot',
-                subtitle: 'RAG-Powered Legal Assistant',
-                problem: 'Legal professionals waste hours searching through unstructured legal documents. Generic LLMs hallucinate citations and provide unreliable legal references.',
-                role: 'AI Developer • Personal Project',
+            bharat: {
+                title: "Bharat AI Chatbot",
+                tech: ["Flask", "React", "MongoDB", "Redis", "JWT"],
+                problem: "Need for a scalable, multilingual AI chatbot platform that could handle concurrent users securely.",
+                role: "AI Full-Stack Developer (Contract)",
                 process: [
-                    'Researched RAG architectures for domain-specific QA',
-                    'Implemented advanced document parsing for legal texts',
-                    'Built FAISS vector index for efficient retrieval',
-                    'Enforced strict citation grounding to minimize hallucinations'
+                    "Developed end-to-end full-stack solution connecting React frontend with Flask backend.",
+                    "Integrated LLM workflows with secure JWT authentication and Redis caching for performance.",
+                    "Delivered a fully functional MVP on schedule meeting all client requirements."
                 ],
-                solution: 'Created a Retrieval-Augmented Generation assistant that accurately retrieves and synthesizes information from complex legal documents with verified citations.',
                 results: [
-                    'Minimized LLM hallucinations through citation grounding',
-                    'Accurate retrieval from unstructured legal documents',
-                    'Context-aware responses with source verification',
-                    'Reduced legal research time by 60%'
+                    { label: "Delivery", value: "On Schedule MVP" },
+                    { label: "Security", value: "JWT + RBAC" },
+                    { label: "Performance", value: "Redis Caching" }
                 ],
-                tech: ['Python', 'LangChain', 'RAG', 'FAISS', 'LLM', 'Vector DB']
+                link: "#"
             },
-            'hidevs': {
-                title: 'HiDevs AI Workflow Automation',
-                subtitle: 'Content Generation Pipeline',
-                problem: 'Content teams spent 10+ hours weekly on repetitive tasks like blog drafting and email composition, reducing time for strategic work.',
-                role: 'Generative AI Developer Intern • May 2025 – Sep 2025',
+            hidevs: {
+                title: "HiDevs Workflow Automation",
+                tech: ["FastAPI", "LangChain", "Automation", "LLM"],
+                problem: "Manual content generation workflows (blogs, emails) were consuming significant engineering time.",
+                role: "Generative AI Developer Intern",
                 process: [
-                    'Analyzed existing content workflows to identify automation opportunities',
-                    'Built FastAPI backend with LangChain integration',
-                    'Designed LLM prompts for blog and email generation',
-                    'Implemented monitoring and error handling for reliability'
+                    "Built backend REST APIs using FastAPI to integrate LangChain LLM workflows.",
+                    "Automated 3 core content workflows including blog generation and email drafting.",
+                    "Improved application reliability across internal tools through standardized AI agents."
                 ],
-                solution: 'Automated 3 core content workflows using AI, freeing up 10+ hours weekly for the content team while improving output consistency.',
                 results: [
-                    'Eliminated 10+ hours of manual work per week',
-                    'Automated 3 core content workflows',
-                    'Improved application reliability across internal tools',
-                    'Maintained brand voice consistency across generated content'
+                    { label: "Time Saved", value: "10+ Hours/Week" },
+                    { label: "Workflows", value: "3 Core Automated" },
+                    { label: "Stack", value: "FastAPI + LangChain" }
                 ],
-                tech: ['FastAPI', 'LangChain', 'LLM Workflows', 'Automation', 'Python']
+                link: "#"
             }
         };
 
-        // ===== NAVIGATION SCROLL EFFECT =====
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        // Modal Logic
+        const modal = document.getElementById('projectModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalTech = document.getElementById('modalTech');
+        const modalBody = document.getElementById('modalBody');
+        const modalLink = document.getElementById('modalLink');
 
-        // ===== SCROLL ANIMATIONS =====
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
-        // ===== MODAL FUNCTIONS =====
-        function openModal(projectId) {
-            const data = projectData[projectId];
-            if (!data) return;
-
-            const modalBody = document.getElementById('modalBody');
-            modalBody.innerHTML = `
-                <span class="section-tag">${data.subtitle}</span>
-                <h2 style="margin-bottom: 1.5rem;">${data.title}</h2>
-                
-                <div style="margin-bottom: 2rem;">
-                    <h4 style="font-size: 0.875rem; color: var(--text-tertiary); margin-bottom: 0.5rem;">MY ROLE</h4>
-                    <p>${data.role}</p>
+        function openModal(projectKey) {
+            const data = projects[projectKey];
+            
+            modalTitle.innerText = data.title;
+            modalLink.href = data.link;
+            
+            // Render Tech Pills
+            modalTech.innerHTML = data.tech.map(t => `<span>${t}</span>`).join('');
+            
+            // Render Body
+            let metricsHtml = data.results.map(r => `
+                <div class="metric-card">
+                    <span class="metric-value">${r.value}</span>
+                    <span class="metric-label">${r.label}</span>
                 </div>
-                
-                <div style="margin-bottom: 2rem;">
-                    <h4 style="font-size: 0.875rem; color: var(--text-tertiary); margin-bottom: 0.5rem;">THE PROBLEM</h4>
+            `).join('');
+
+            let processHtml = data.process.map(p => `<li>${p}</li>`).join('');
+
+            modalBody.innerHTML = `
+                <div class="modal-section">
+                    <h4>The Problem</h4>
                     <p>${data.problem}</p>
                 </div>
-                
-                <div style="margin-bottom: 2rem;">
-                    <h4 style="font-size: 0.875rem; color: var(--text-tertiary); margin-bottom: 0.5rem;">THE PROCESS</h4>
-                    <ul style="list-style: none; padding-left: 0;">
-                        ${data.process.map(step => `
-                            <li style="position: relative; padding-left: 1.25rem; margin-bottom: 0.5rem; color: var(--text-secondary);">
-                                <span style="position: absolute; left: 0; color: var(--accent-primary);">▹</span>
-                                ${step}
-                            </li>
-                        `).join('')}
-                    </ul>
+                <div class="modal-section">
+                    <h4>My Role</h4>
+                    <p>${data.role}</p>
                 </div>
-                
-                <div style="margin-bottom: 2rem;">
-                    <h4 style="font-size: 0.875rem; color: var(--text-tertiary); margin-bottom: 0.5rem;">THE SOLUTION</h4>
-                    <p>${data.solution}</p>
+                <div class="modal-section">
+                    <h4>The Process</h4>
+                    <ul>${processHtml}</ul>
                 </div>
-                
-                <div style="margin-bottom: 2rem;">
-                    <h4 style="font-size: 0.875rem; color: var(--text-tertiary); margin-bottom: 1rem;">MEASURABLE RESULTS</h4>
-                    <div style="display: grid; gap: 0.75rem;">
-                        ${data.results.map(result => `
-                            <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-success);">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="20 6 9 17 4 12"/>
-                                </svg>
-                                <span style="color: var(--text-secondary);">${result}</span>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 style="font-size: 0.875rem; color: var(--text-tertiary); margin-bottom: 1rem;">TECH STACK</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                        ${data.tech.map(t => `
-                            <span style="font-family: var(--font-mono); font-size: 0.75rem; padding: 0.25rem 0.75rem; background: var(--bg-tertiary); border-radius: 4px; color: var(--text-secondary);">
-                                ${t}
-                            </span>
-                        `).join('')}
-                    </div>
+                <div class="modal-section">
+                    <h4>Measurable Results</h4>
+                    <div class="metric-grid">${metricsHtml}</div>
                 </div>
             `;
 
-            document.getElementById('projectModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            lucide.createIcons();
         }
 
         function closeModal() {
-            document.getElementById('projectModal').classList.remove('active');
-            document.body.style.overflow = '';
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
 
-        // Close modal on overlay click
-        document.getElementById('projectModal').addEventListener('click', (e) => {
-            if (e.target === e.currentTarget) {
-                closeModal();
-            }
+        // Close on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
         });
 
-        // Close modal on Escape key
+        // Close on Escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
                 closeModal();
             }
         });
 
-        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+        // Smooth Scroll for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
